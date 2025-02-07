@@ -1,0 +1,427 @@
+body {
+  font-family: "Unbounded", sans-serif;
+  background: $background;
+  margin: 0 auto;
+  color: $baby_blue;
+  padding: 0;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: get-vw(10px);
+  #root,
+  .app {
+    height: 100%;
+  }
+}
+.app {
+  display: flex;
+  flex-direction: row;
+}
+::selection {
+  color: #181818;
+  background-color: $baby_blue;
+}
+a {
+  text-decoration: none;
+  font-family: "Unbounded", sans-serif;
+  font-size: get-vw(15px);
+  font-weight: 700;
+  line-height: get-vw(27px);
+  letter-spacing: 0.09em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  text-transform: uppercase;
+  color: $baby_blue;
+  @include responsive-size(font-size, 15px);
+  @include responsive-size(line-height, 27px);
+}
+.bold {
+  font-weight: 700;
+}
+section {
+  &.center {
+    height: 100%;
+    position: relative;
+    display: flex;
+    margin: 0 get-vw(20px) 0 get-vw(32px);
+    flex-direction: column;
+  }
+}
+ul {
+  list-style-type: none;
+}
+html {
+  box-sizing: border-box;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol {
+    padding: 0;
+    margin: 0;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  display: inline-block;
+}
+body,
+html {
+  overflow-x: hidden;
+  padding: 0;
+}
+.text-center {
+  text-align: center;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.flex-top {
+  @include flexbox($placeItems: flex-start);
+}
+
+.flex-bottom {
+  @include flexbox($placeItems: flex-end);
+}
+
+.flex-center {
+  @include flexbox($placeItems: center);
+}
+
+.flex-left {
+  @include flexbox($placeContent: flex-start);
+}
+
+.flex-right {
+  @include flexbox($placeContent: flex-end);
+}
+
+.flex-center-hor {
+  @include flexbox($placeContent: center);
+}
+input {
+  color: $baby_blue !important;
+}
+.italic {
+  font-style: italic;
+}
+
+.desktop {
+  @include mobile-screen {
+    display: none !important;
+  }
+}
+.mobile {
+  @media screen and (min-width: 768px) {
+    display: none !important;
+  }
+}
+.btn {
+  height: get-vw(51px);
+  font-size: get-vw(16px);
+  font-weight: 700;
+  line-height: get-vw(19.5px);
+  background: $baby_blue;
+  @include ls-to-vw(16, 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-family: "Unbounded", sans-serif;
+  padding: get-vw(15px) get-vw(22px) get-vw(15px) get-vw(66px);
+  color: $background;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: padding 0.88s ease-out, transform 0.1s ease-out;
+  animation-delay: 0.33s;
+
+  @include responsive-size(font-size, 16px);
+  @include responsive-size(height, 51px);
+  @include responsive-size(line-height, 19px);
+  @include responsive-size(padding, 15px 22px 15px 66px);
+
+  .icon-left {
+    position: absolute;
+    left: get-vw(22px); /* Starting position */
+    opacity: 1;
+    transition: transform 0.33s ease-out, opacity 0.33s ease-out,
+      left 0.33s ease-out, right 0.33s ease-out;
+    height: get-vw(20px);
+    @include responsive-size(height, 20px);
+    @include responsive-size(left, 22px);
+  }
+}
+
+@keyframes iconMoveRight {
+  0% {
+    transform: translateX(0); /* Starts at the original position */
+    opacity: 1;
+    left: get-vw(22px);
+  }
+  40% {
+    transform: translateX(6px); /* Moves icon to the right */
+    opacity: 0; /* Icon fades out */
+  }
+  60% {
+    right: get-vw(32px); /* Keep it at the right side */
+    // opacity: 0; /* Icon stays hidden */
+  }
+  100% {
+    transform: translateX(0); /* Icon comes back to the original position */
+    opacity: 1; /* Icon stays hidden */
+    left: auto;
+    right: get-vw(22px); /* Keep it at the right side */
+  }
+}
+
+@include mobile-screen {
+  @keyframes iconMoveRight {
+    0% {
+      transform: translateX(0); /* Starts at the original position */
+      opacity: 1;
+      left: get-fmvw(22px);
+    }
+    40% {
+      transform: translateX(6px); /* Moves icon to the right */
+      opacity: 0; /* Icon fades out */
+    }
+    60% {
+      right: get-fmvw(32px); /* Keep it at the right side */
+      // opacity: 0; /* Icon stays hidden */
+    }
+    100% {
+      transform: translateX(0); /* Icon comes back to the original position */
+      opacity: 1; /* Icon stays hidden */
+      left: auto;
+      right: get-fmvw(22px); /* Keep it at the right side */
+    }
+  }
+}
+@keyframes buttonShiftLeft {
+  0% {
+    justify-content: flex-end; /* Starts at the original position */
+  }
+  100% {
+    justify-content: flex-start; /* Starts at the original position */
+  }
+}
+@keyframes textShiftLeft {
+  0% {
+    transform: translateX(0); /* Starts at the original position */
+  }
+  100% {
+    transform: translateX(-6px); /* Moves text to the left */
+  }
+}
+@include mobile-screen {
+  @keyframes textShiftLeft {
+    0% {
+      transform: translateX(0); /* Starts at the original position */
+    }
+    100% {
+      transform: translateX(6px); /* Moves text to the left */
+    }
+  }
+}
+@keyframes iconMoveLeftBack {
+  0% {
+    transform: translateX(-6px); /* Starts from the left side */
+    opacity: 0;
+    left: auto;
+    right: get-vw(22px); /* Icon initially on the right */
+  }
+  60% {
+    transform: translateX(6px); /* Moves icon back to the right */
+    opacity: 0; /* Icon stays hidden */
+  }
+  100% {
+    transform: translateX(0); /* Moves icon to the original position */
+    opacity: 1; /* Icon fades in */
+    left: get-vw(22px); /* Returns to the left */
+  }
+}
+
+@include mobile-screen {
+  @keyframes iconMoveLeftBack {
+    0% {
+      transform: translateX(-6px); /* Starts from the left side */
+      opacity: 0;
+      left: auto;
+      right: get-fmvw(22px); /* Icon initially on the right */
+    }
+    60% {
+      transform: translateX(6px); /* Moves icon back to the right */
+      opacity: 0; /* Icon stays hidden */
+    }
+    100% {
+      transform: translateX(0); /* Moves icon to the original position */
+      opacity: 1; /* Icon fades in */
+      left: get-fmvw(22px); /* Returns to the left */
+    }
+  }
+}
+
+@keyframes textShiftRightBack {
+  0% {
+    transform: translateX(-6px); /* Starts from the left */
+  }
+  100% {
+    transform: translateX(0); /* Returns to the original position */
+  }
+}
+
+h4 {
+  font-family: "Unbounded";
+  font-size: get-vw(22px);
+  font-weight: 500;
+  line-height: get-vw(34px);
+  color: $baby_blue;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  @include responsive-size(font-size, 22px);
+  @include responsive-size(line-height, 34px);
+}
+@keyframes drawFromZero {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes drawToZero {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+
+#menu-role {
+  ul {
+    background-color: $baby_blue;
+  }
+  li {
+    font-family: "Unbounded";
+    font-size: get-vw(18px);
+    font-weight: 500;
+    line-height: get-vw(24px);
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    @include responsive-size(font-size, 18px);
+    @include responsive-size(line-height, 24px);
+  }
+}
+body .react-tel-input .form-control {
+  width: 100%;
+  max-width: 100%;
+}
+body .react-tel-input .country-list {
+  background: $background;
+  .country {
+    &:hover {
+      background-color: #3f3f3f;
+    }
+  }
+  .country.highlight {
+    background-color: #3f3f3f;
+  }
+}
+
+//checkbox
+.consent-group {
+  .checkbox-wrapper-32 {
+    --size: 20px;
+    --border-size: 2px;
+    position: relative;
+  }
+
+  .checkbox-wrapper-32 *,
+  .checkbox-wrapper-32 *::after,
+  .checkbox-wrapper-32 *::before {
+    box-sizing: border-box;
+  }
+
+  .checkbox-wrapper-32 input[type="checkbox"] {
+    display: inline-block;
+    vertical-align: middle;
+    opacity: 0;
+  }
+
+  .checkbox-wrapper-32 input[type="checkbox"],
+  .checkbox-wrapper-32 label::before {
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .checkbox-wrapper-32 label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding: 0 0 0 calc(var(--size) + get-vw(16px));
+  }
+
+  .checkbox-wrapper-32 label::before {
+    content: "";
+    border: var(--border-size) solid $baby_blue;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+
+  .checkbox-wrapper-32 input[type="checkbox"]:checked + label::before {
+    opacity: 1;
+  }
+
+  .checkbox-wrapper-32 svg {
+    position: absolute;
+    top: calc(50% + var(--border-size));
+    left: var(--border-size);
+    width: calc(var(--size) - (var(--border-size) * 2));
+    height: calc(var(--size) - (var(--border-size) * 2));
+    margin-top: calc(var(--size) / -2);
+    pointer-events: none;
+  }
+
+  .checkbox-wrapper-32 svg path {
+    stroke-width: 0;
+    fill: none;
+    transition: stroke-dashoffset 0.2s ease-in 0s;
+  }
+
+  .checkbox-wrapper-32 svg path + path {
+    transition: stroke-dashoffset 0.2s ease-out 0.2s;
+  }
+
+  .checkbox-wrapper-32 input[type="checkbox"]:checked ~ svg path {
+    stroke-dashoffset: 0;
+    stroke-width: calc(var(--size) / 2);
+  }
+}

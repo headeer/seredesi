@@ -1,0 +1,26 @@
+footer {
+  padding: get-vw(11px) 0 get-vw(11px) 0;
+  gap: get-vw(22px);
+  position: relative;
+  &::after {
+    content: "";
+    height: 2px;
+    background-color: #d2e7fa20;
+    width: 100%;
+    position: absolute;
+  }
+  h5 {
+    //styleName: footer_small;
+    font-size: get-vw(11px);
+    font-weight: 300;
+    line-height: get-vw(22px);
+    letter-spacing: 0.22em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    .icon {
+      margin: 0 get-vw(11px);
+      color: $baby_blue;
+    }
+  }
+}

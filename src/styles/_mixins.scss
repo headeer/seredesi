@@ -1,0 +1,207 @@
+// Common mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-start($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: $gap;
+}
+
+@mixin text-style($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+$tablet: 768;
+$large: 1024;
+$desktop: 1280;
+$sm: "(min-width: 576px)";
+$md: "(min-width: 768px)";
+$lg: "(min-width: 992px)";
+$xl: "(min-width: 1200px)";
+$xxl: "(min-width: 1440px)";
+$xxxl: "(min-width: 1921px)";
+$max-breakpoint-vh: 920;
+
+@function get-vh($target) {
+  // 1 vh is equal to 1% of the viewport height
+  $vh-context: ($max-breakpoint-vh * 0.01) * 1px; // 1% viewport height
+  @return ($target / $vh-context) * 1vh;
+}
+
+$max-breakpoint: 1920;
+@function get-vw($target) {
+  // 1 vw is equal to 1% of the viewport width
+  $vw-context: ($max-breakpoint * 0.01) * 1px; // 1% viewport width
+  @return ($target/$vw-context) * 1vw;
+}
+
+$maxH-breakpoint: 1080;
+@function get-vh($target) {
+  // 1 vw is equal to 1% of the viewport width
+  $vh-context: ($maxH-breakpoint * 0.01) * 1px; // 1% viehport width
+  @return ($target/$vh-context) * 1vh;
+}
+$maxsH-breakpoint: 950;
+@function get-svh($target) {
+  // 1 vw is equal to 1% of the viewport width
+  $vh-context: ($maxsH-breakpoint * 0.01) * 1px; // 1% viehport width
+  @return ($target/$vh-context) * 1vh;
+}
+
+$maxm-breakpoint: 1080;
+@function get-mvw($target) {
+  // 1 vw is equal to 1% of the viewport width
+  $vw-context: ($maxm-breakpoint * 0.01) * 1px; // 1% viewport width
+  @return ($target/$vw-context) * 1vw;
+}
+
+$maxt-breakpoint: 1024;
+@function get-tvw($target) {
+  // 1 vw is equal to 1% of the viewport width
+  $vw-context: ($maxt-breakpoint * 0.01) * 1px; // 1% viewport width
+  @return ($target/$vw-context) * 1vw;
+}
+
+$maxl-breakpoint: 2560;
+@function get-lvw($target) {
+  // 1 vw is equal to 1% of the viewport width
+  $vw-context: ($maxl-breakpoint * 0.01) * 1px; // 1% viewport width
+  @return ($target/$vw-context) * 1vw;
+}
+
+//figma converter from px to vw
+
+$maxmobile-breakpoint: 360; // Maximum breakpoint for vw calculations
+
+@function get-fmvw($target) {
+  // Calculate vw for other values
+  $vw-context: ($maxmobile-breakpoint * 0.01) * 1px; // 1% of the viewport width
+  @return ($target / $vw-context) * 1vw;
+}
+
+$tablet-breakpoint: 768;
+@function get-ftvw($target) {
+  // 1 vw is equal to 1% of the viewport width
+  $vw-context: ($tablet-breakpoint * 0.01) * 1px; // 1% viewport width
+  @return ($target/$vw-context) * 1vw;
+}
+$desktop-breakpoint: 1440;
+@function get-fvw($target) {
+  // 1 vw is equal to 1% of the viewport width
+  $vw-context: ($desktop-breakpoint * 0.01) * 1px; // 1% viewport width
+  @return ($target/$vw-context) * 1vw;
+}
+
+// flexbox
+@mixin flexbox(
+  $display: flex,
+  $direction: row,
+  $placeContent: null,
+  $placeItems: null,
+  $wrap: nowrap,
+  $shrink: 0,
+  $grow: 0,
+  $alignContent: null,
+  $justifyContent: null,
+  $alignItems: null,
+  $justifyItems: null
+) {
+  display: $display;
+  flex-direction: $direction;
+
+  @if $placeContent == null {
+    @if $alignContent {
+      align-content: $alignContent;
+    }
+    @if $justifyContent {
+      justify-content: $justifyContent;
+    }
+  } @else {
+    place-content: $placeContent;
+  }
+
+  @if $placeItems == null {
+    @if $alignItems {
+      align-items: $alignItems;
+    }
+    @if $justifyItems {
+      justify-items: $justifyItems;
+    }
+  } @else {
+    place-items: $placeItems;
+  }
+
+  flex-wrap: $wrap;
+  flex-shrink: $shrink;
+  flex-grow: $grow;
+}
+
+@mixin ls-to-vw($fontSize, $spacingPercentage, $baseScreenWidth: 1440) {
+  $valueInVw: ($spacingPercentage / 100) * ($fontSize / $baseScreenWidth) *
+    100vw;
+  letter-spacing: #{$valueInVw};
+}
+
+// Mixin for mobile-scaled: Handles scaling logic for 0-360px and 375px-768px
+@mixin mobile-screen {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+// Mixin for mobile-static: Applies static styles for 360px-375px
+@mixin mobile-static {
+  @media screen and (min-width: 360px) and (max-width: 375px) {
+    @content;
+  }
+}
+@mixin responsive-size($property, $value) {
+  @if type-of($value) == list {
+    // Handle multiple values (e.g., padding: 22px 22px 44px)
+    $responsive-values: ();
+    @each $val in $value {
+      $responsive-values: append(
+        $responsive-values,
+        if(
+          type-of($val) == number and not unitless($val) and unit($val) == "px",
+          get-fmvw($val),
+          $val
+        )
+      );
+    }
+    @media screen and (min-width: 360px) and (max-width: 375px) {
+      #{$property}: $value;
+    }
+    @media screen and (max-width: 360px),
+      screen and (min-width: 375px) and (max-width: 768px) {
+      #{$property}: $responsive-values;
+    }
+  } @else if
+    type-of($value) ==
+    number and not
+    unitless($value) and
+    unit($value) ==
+    "px"
+  {
+    // Handle single px values dynamically
+    @media screen and (min-width: 360px) and (max-width: 375px) {
+      #{$property}: $value; // Static range
+    }
+    @media screen and (max-width: 360px),
+      screen and (min-width: 375px) and (max-width: 768px) {
+      #{$property}: get-fmvw($value); // Scaled range
+    }
+  } @else {
+    // For non-px values (e.g., %, em), fallback to mobile-screen
+    @include mobile-screen {
+      #{$property}: $value;
+    }
+  }
+}

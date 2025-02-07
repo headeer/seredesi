@@ -1,0 +1,128 @@
+/* src/styles/loader.scss */
+
+$background: #000; // Replace with the actual background color
+$baby_blue: #89cff0; // Example color, adjust as needed
+
+.loader-container {
+  background: $background;
+  z-index: 500;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.line {
+  background-color: $baby_blue;
+  height: 2px;
+  width: 0;
+}
+
+.top-line {
+  animation: lineExpand 0.88s forwards ease-in-out;
+}
+
+.bottom-line {
+  animation: lineExpandReverse 0.88s forwards ease-in-out;
+  animation-delay: 0.1s;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.desktop-logo,
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-logo {
+  flex-direction: row;
+}
+
+.mobile-logo {
+  flex-direction: column;
+  display: none;
+  position: relative;
+}
+
+.desktop-letter,
+.mobile-letter {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards ease-in-out;
+  transform: scale(0.9);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lineExpand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes lineExpandReverse {
+  from {
+    width: 0;
+    transform: translateX(100%);
+  }
+  to {
+    width: 100%;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile Specific Line */
+.mobile-line {
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  width: 2px;
+  height: 0;
+  background-color: $baby_blue;
+  animation: mobileLineExpand 0.88s forwards ease-in-out;
+  animation-delay: 0.1s;
+}
+
+@keyframes mobileLineExpand {
+  from {
+    height: 0;
+  }
+  to {
+    height: 66%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .desktop-logo {
+    display: none;
+  }
+  .mobile-logo {
+    display: flex;
+  }
+}

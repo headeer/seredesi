@@ -1,0 +1,34 @@
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  max-width: get-vw(136px);
+  padding: get-vw(22px);
+}
+
+.desktop-logo {
+  display: none;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.mobile-logo {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (min-width: 768px) {
+  .desktop-logo {
+    display: flex;
+  }
+  .mobile-logo {
+    display: none;
+  }
+}
+
+.desktop-letter,
+.mobile-letter {
+  width: get-vw(89.06px);
+}
