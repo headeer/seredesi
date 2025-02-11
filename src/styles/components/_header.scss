@@ -5,6 +5,16 @@ header {
   align-items: flex-start;
   margin-right: get-vw(40px);
   width: get-vw(191px);
+  transition: all 0.33s ease-in-out;
+  &.header_short {
+    @include responsive-size(max-height, 58px);
+  }
+  @include mobile-screen {
+    width: 100%;
+    flex-direction: column;
+  }
+  @include responsive-size(max-height, 100px);
+  @include responsive-size(gap, 10px);
 }
 .language-menu {
   display: flex;
@@ -53,6 +63,9 @@ header {
 }
 .home {
   width: 100%;
+  @include mobile-screen {
+    height: 100%;
+  }
 }
 .navigation {
   display: flex;
@@ -72,7 +85,7 @@ header {
     li {
       width: 100%;
       &.active {
-        a {
+        button {
           cursor: default;
           &::after {
             width: 0;
@@ -80,7 +93,10 @@ header {
           text-decoration: none;
         }
       }
-      a {
+      button {
+        background: transparent;
+        border: none;
+        outline: none;
         color: $baby_blue;
         text-transform: uppercase;
         cursor: pointer;
@@ -92,6 +108,7 @@ header {
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
+        width: 100%;
         &:hover {
           &::after {
             width: 0;
@@ -109,7 +126,7 @@ header {
     }
   }
 }
-/* src/styles/main.scss */
+
 .language-menu-wrapper {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out,
     max-width 0.5s ease-in-out, padding 0.5s ease-in-out;
@@ -117,14 +134,60 @@ header {
   opacity: 1;
   max-width: 200px; /* Adjust based on your layout */
   overflow: hidden; /* Hide content when shrinking */
-  padding: 0 10px; /* Add some default padding for spacing */
+  padding: 0; /* Add some default padding for spacing */
+  @include mobile-screen {
+    max-width: 100%;
+    padding: 0;
+    transition: all ease-in-out 0.33s;
+    height: 100%;
+    display: flex;
+    transform: translateY(0);
+    width: 100%;
+    flex-direction: row;
+  }
+  @include responsive-size(max-height, 42px);
+  .language-menu {
+    @include mobile-screen {
+      flex-direction: row;
+      margin-right: 0;
+      margin: 0;
+      transition: all ease-in-out 0.33s;
+      width: 100%;
+      justify-content: space-between;
+      border-bottom: 1px solid $baby_blue;
+    }
+  }
+  .language-menu a {
+    @include mobile-screen {
+      font-family: "Unbounded";
+      font-weight: 500;
+      letter-spacing: 22%;
+      transition: all ease-in-out 0.33s;
+      &:hover {
+        &::after {
+          content: none;
+        }
+      }
+      &.active {
+        background-color: $baby_blue;
+        color: #181818;
+      }
+    }
+    @include responsive-size(padding, 11px);
 
+    @include responsive-size(font-size, 13px);
+    @include responsive-size(line-height, 19px);
+  }
   &.hide {
     transform: translateX(-100%); /* Slide smoothly to the left */
     opacity: 0; /* Fade out */
     max-width: 0; /* Collapse width */
     padding: 0; /* Remove padding */
     pointer-events: none; /* Disable interaction */
+    @include mobile-screen {
+      height: 0;
+      transform: translateY(-100%); /* Slide smoothly to the left */
+    }
   }
 
   &.show {
@@ -133,5 +196,136 @@ header {
     max-width: 200px; /* Expand to original width */
     padding: 0 10px; /* Restore padding */
     pointer-events: auto; /* Enable interaction */
+    @include mobile-screen {
+      transform: translateY(0); /* Slide smoothly to the left */
+      height: 100%;
+      padding: 0;
+      max-width: 100%;
+    }
+  }
+}
+.logo_mobile {
+  height: 100%;
+  @include mobile-screen {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  @include responsive-size(gap, 22px);
+}
+
+.mobile-menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: calc(100% - get-fmvw(88px));
+  z-index: 55;
+  transition: all 0.33s ease-in-out;
+  position: fixed;
+  @include responsive-size(top, 88px);
+  &.open {
+    height: calc(100% - get-fmvw(55px));
+    @include responsive-size(top, 92px);
+  }
+  .mobile-menu {
+    @include responsive-size(padding, 22px);
+    background: $bg_primary;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    @include responsive-size(gap, 22px);
+    justify-content: flex-start;
+    h2 {
+      font-family: "Unbounded";
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: $baby_blue;
+      position: relative;
+      .red {
+        color: $uido-active;
+      }
+      @include responsive-size(font-size, 13px);
+      @include responsive-size(line-height, 19px);
+      @include responsive-size(margin-bottom, 11px);
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: get-vw(2px);
+        position: absolute;
+        left: 0;
+        background-color: $baby_blue;
+        transition: width 0.3s;
+        @include responsive-size(bottom, -10px);
+      }
+    }
+    p {
+      font-family: "Unbounded";
+      font-weight: 400;
+      letter-spacing: 0.11em;
+      @include responsive-size(font-size, 11px);
+      @include responsive-size(line-height, 17px);
+      @include responsive-size(margin, 22px 0);
+    }
+    .menu-items {
+      display: flex;
+      flex-direction: column;
+      @include responsive-size(gap, 22px);
+      align-items: flex-start;
+      justify-content: flex-start;
+      .menu-item {
+        font-family: "Unbounded";
+        font-weight: 400;
+        letter-spacing: 0.11em;
+        @include responsive-size(font-size, 24px);
+        @include responsive-size(line-height, 29px);
+        background: transparent;
+        color: $baby_blue;
+        cursor: pointer;
+        text-align: left;
+        text-transform: uppercase;
+        outline: none;
+        position: relative;
+        border: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        svg {
+          @include responsive-size(width, 21px);
+          @include responsive-size(height, 30px);
+        }
+        &::after {
+          width: 100%;
+          content: "";
+          background: $baby_blue;
+          height: 1px;
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          transition: width 0.3s;
+        }
+        &.active {
+          &::after {
+            width: 0;
+            content: "";
+            background: $baby_blue;
+            height: 1px;
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            transition: width 0.3s;
+          }
+        }
+      }
+    }
+    .menu-footer {
+      position: relative;
+      @include responsive-size(top, 66px);
+    }
   }
 }

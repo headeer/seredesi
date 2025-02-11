@@ -1,113 +1,145 @@
 /* src/styles/loader.scss */
 
-$background: #000; // Replace with the actual background color
-$baby_blue: #89cff0; // Example color, adjust as needed
-
 .loader-container {
   background: $background;
   z-index: 500;
   position: fixed;
   width: 100vw;
   height: 100vh;
-  padding: 22px;
+  padding: get-vw(22px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-}
-
-.line {
-  background-color: $baby_blue;
-  height: 2px;
-  width: 0;
-}
-
-.top-line {
-  animation: lineExpand 0.88s forwards ease-in-out;
-}
-
-.bottom-line {
-  animation: lineExpandReverse 0.88s forwards ease-in-out;
-  animation-delay: 0.1s;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-}
-
-.desktop-logo,
-.mobile-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.desktop-logo {
-  flex-direction: row;
-}
-
-.mobile-logo {
-  flex-direction: column;
-  display: none;
   position: relative;
-}
+  @include mobile-screen {
+    flex-direction: row;
+  }
 
-.desktop-letter,
-.mobile-letter {
-  opacity: 0;
-  animation: fadeIn 0.5s forwards ease-in-out;
-  transform: scale(0.9);
-}
+  .line {
+    background-color: $baby_blue;
+    height: 2px;
+    width: 0;
+  }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
+  .top-line {
+    animation: lineExpand 1.33s forwards linear;
+    position: absolute;
+    top: -20px;
+    left: 0;
+  }
+
+  .bottom-line {
+    animation: lineExpand 1.33s forwards linear;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    @include mobile-screen {
+      animation: lineExpandVertical 1.33s forwards linear;
+      width: 1px;
+      left: auto;
+    }
+    @include responsive-size(right, -60px);
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    padding: get-vw(44px) 0;
+    @include mobile-screen {
+      flex-direction: row;
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  .desktop-logo,
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mobile-screen {
+      justify-content: space-between;
+    }
+  }
+
+  .desktop-logo {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .mobile-logo {
+    flex-direction: column;
+    position: relative;
+    @include mobile-screen {
+      flex-direction: column-reverse;
+      height: 100%;
+    }
+  }
+
+  .letter-desktop,
+  .letter-mobile {
     opacity: 0;
+    animation: fadeIn 0.88s forwards ease-in-out;
     transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes lineExpand {
-  from {
-    width: 0;
-  }
-  to {
     width: 100%;
   }
-}
 
-@keyframes lineExpandReverse {
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes lineExpand {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes lineExpandReverse {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  /* Mobile Specific Line */
+  .mobile-line {
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    width: 2px;
+    height: 0;
+    background-color: $baby_blue;
+    animation: mobileLineExpand 0.88s forwards ease-in-out;
+    animation-delay: 0.1s;
+  }
+}
+@keyframes lineExpandVertical {
   from {
-    width: 0;
-    transform: translateX(100%);
+    height: 0;
   }
   to {
-    width: 100%;
-    transform: translateX(0);
+    height: 80%;
   }
 }
-
-/* Mobile Specific Line */
-.mobile-line {
-  position: absolute;
-  right: 50%;
-  bottom: 0;
-  width: 2px;
-  height: 0;
-  background-color: $baby_blue;
-  animation: mobileLineExpand 0.88s forwards ease-in-out;
-  animation-delay: 0.1s;
-}
-
 @keyframes mobileLineExpand {
   from {
     height: 0;

@@ -7,7 +7,14 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <h5>
+      <h5 className="mobile">
+        {t("ux_best")}
+        <span className="icon">
+          <CopyIcon />
+        </span>
+        {t("year")}
+      </h5>
+      <h5 className="desktop">
         {t("international_solutions")}
         <span className="icon">
           <CopyIcon />

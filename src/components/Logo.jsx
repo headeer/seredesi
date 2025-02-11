@@ -18,7 +18,7 @@ const mobileOrder = [S_M, E_M, R_M, E_M, D_M, E_M, S2_M, I_M];
 
 const Logo = () => {
   return (
-    <div className="logo-container">
+    <div className="logo-section">
       <div className="desktop-logo">
         {desktopOrder.map((Letter, index) => (
           <Letter key={index} className="desktop-letter" />

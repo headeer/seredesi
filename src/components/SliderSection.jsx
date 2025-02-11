@@ -4,6 +4,7 @@ import { Controller, useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { ReactComponent as ArrowIcon } from "../assets/arrow_icon.svg";
 import { ReactComponent as CopyIcon } from "../assets/s_icon.svg";
+import { ReactComponent as TickIcon } from "../assets/tick_icon.svg";
 import Footer from "./Footer";
 import { useSlide } from "../context/SlideContext"; // Import the context
 import PhoneInput from "react-country-phone-input";
@@ -24,6 +25,7 @@ const SliderSection = () => {
   const [exitClass, setExitClass] = useState(false);
   const { register, handleSubmit, control } = useForm();
   const { currentSlide, setCurrentSlide } = useSlide(); // Use the context
+  const [submittedData, setSubmittedData] = useState({});
 
   const nextSlide = () => {
     const next = (currentSlide + 1) % 4;
@@ -31,6 +33,8 @@ const SliderSection = () => {
   };
 
   const onSubmit = (data) => {
+    if (currentSlide === 4) return;
+    setSubmittedData(data);
     setCurrentSlide(4); // Show thank you message after form submission
   };
 
@@ -51,7 +55,8 @@ const SliderSection = () => {
                 <small>{t("selective_redesign")}</small>
                 <h1>{t("new_methodology")}</h1>
                 <span>{t("for_improvement")}</span>
-                <p>{t("methodology_description")}</p>
+                <p className="desktop">{t("methodology_description")}</p>
+                <p className="mobile">{t("methodology_description_mobile")}</p>
               </>
             )}
             {currentSlide === 1 && (
@@ -59,7 +64,10 @@ const SliderSection = () => {
                 <small>{t("practical_method")}</small>
                 <h1>{t("for_business")}</h1>
                 <span>{t("to_improve_ui_ux")}</span>
-                <p>{t("implementation_description")}</p>
+                <p className="desktop">{t("implementation_description")}</p>
+                <p className="mobile">
+                  {t("implementation_description_mobile")}
+                </p>
               </>
             )}
             {currentSlide === 2 && (
@@ -68,19 +76,58 @@ const SliderSection = () => {
                 <h1>
                   {t("support")} <span>{t("key_areas")}</span>
                 </h1>
+                <p className="mobile">
+                  {t("implementation_description_mobile")}
+                </p>
               </>
             )}
             {currentSlide === 3 && (
               <>
-                <small>{t("for_sure")}</small>
-                <h1>
+                <small className="desktop">{t("for_sure")}</small>
+                <h1 className="desktop">
                   {t("selective")} <br />
                   <span>{t("redesign")}</span>
                 </h1>
-                <span>{t("in_key_areas")}</span>
+                <span className="desktop">{t("in_key_areas")}</span>
               </>
             )}
-            {currentSlide === 4 && <p>{t("thank_you_message")}</p>}
+            {currentSlide === 4 && (
+              <>
+                <div className="desktop">
+                  <small>{t("for_sure")}</small>
+                  <h1>
+                    {t("selective")} <br />
+                    <span>{t("redesign")}</span>
+                  </h1>
+                  <h2>{t("in_key_areas")}</h2>
+                </div>
+                <div className="thank-you-data mobile">
+                  <h3>{t("your_message")}</h3>
+                  <p className="body">{submittedData.message}</p>
+                  <h2 className="bottom">{t("your_contact_details")}</h2>
+                  <span className="body_name">{submittedData.name}</span>
+                  <span className="body_email">{submittedData.email}</span>
+                  <span className="body_phone">
+                    {submittedData.phone_number}
+                  </span>
+                  <h4>
+                    {t("thank_you")} <br />
+                    {t("contact_you_mobile")}
+                  </h4>
+                  <button className="sended">
+                    {t("sent")} <TickIcon />
+                  </button>
+                  <h5>
+                    {t("wonderful_wish")}
+                    <br />
+                    <span className="heart">
+                      {t("to_you_today")}
+                      <img src={heart} alt="heart icon" />
+                    </span>
+                  </h5>
+                </div>
+              </>
+            )}
           </div>
 
           <div className={`visual-section slide-${currentSlide} `}>
@@ -97,13 +144,16 @@ const SliderSection = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0 }}
                   >
-                    {currentSlide === 2 && <a href="">FREE CALL</a>}
+                    {currentSlide === 2 && <a href="">{t("free_call")}</a>}
                   </motion.div>
                 ))}
               </AnimatePresence>
             </div>
-            {currentSlide === 3 && (
-              <form onSubmit={handleSubmit(onSubmit)}>
+            {currentSlide >= 3 && (
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className={`${currentSlide === 4 ? "desktop" : ""}`}
+              >
                 <motion.div
                   layout
                   className="call"
@@ -111,7 +161,7 @@ const SliderSection = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0 }}
                 >
-                  <a href="">FREE CALL</a>
+                  <a href="">{t("free_call")}</a>
                 </motion.div>
                 <textarea
                   {...register("message")}
@@ -156,7 +206,7 @@ const SliderSection = () => {
                         id="checkbox-32"
                         {...register("consent", { required: true })}
                       />
-                      <label for="checkbox-32">
+                      <label htmlFor="checkbox-32">
                         {t("consent_statement")}{" "}
                         <Link to="/privacy-policy">{t("privacy_policy")}</Link>
                       </label>
@@ -167,30 +217,41 @@ const SliderSection = () => {
                         <path
                           d="M 10 10 L 90 90"
                           stroke="#d2e7fa"
-                          stroke-dasharray="113"
-                          stroke-dashoffset="113"
+                          strokeDasharray="113"
+                          strokeDashoffset="113"
                         ></path>
                         <path
                           d="M 90 10 L 10 90"
                           stroke="#d2e7fa"
-                          stroke-dasharray="113"
-                          stroke-dashoffset="113"
+                          strokeDasharray="113"
+                          strokeDashoffset="113"
                         ></path>
                       </svg>
                     </div>
                   </div>
-                  <button className="form-submit" type="submit">
-                    {t("send_now")}
+                  <button className="form-submit submit" type="submit">
+                    {currentSlide === 4 ? (
+                      <p>{t("well_done")}</p>
+                    ) : (
+                      <p>{t("send_now")}</p>
+                    )}
+                    <ArrowIcon className="mobile" />
                   </button>
                 </div>
-                <h3>
-                  {t("thank_you")} <br />
-                  {t("contact_you")}
-                </h3>
-                <h4>
-                  {t("wonderful_wish")}
-                  <img src={heart} alt="" />
-                </h4>
+                {currentSlide === 4 ? (
+                  <>
+                    <h3 className="desktop">
+                      {t("thank_you")} <br />
+                      {t("contact_you")}
+                    </h3>
+                    <h4>
+                      {t("wonderful_wish")}
+                      <img src={heart} alt="" />
+                    </h4>
+                  </>
+                ) : (
+                  ""
+                )}
               </form>
             )}
             {currentSlide !== 3 && (
@@ -199,14 +260,18 @@ const SliderSection = () => {
                   <div
                     key={index}
                     className={`dot ${currentSlide === index ? "active" : ""}`}
-                    onClick={() => setCurrentSlide(index)}
+                    onClick={() => {
+                      console.log(index);
+                      setCurrentSlide(index);
+                    }}
                   ></div>
                 ))}
+                <ArrowIcon className="mobile" onClick={nextSlide} />
               </div>
             )}
             <div className="empty_space">
               {currentSlide === 2 && (
-                <div className="content">
+                <div className="content desktop">
                   <div className="row">
                     <h5>{t("saves_time")}</h5>
                     <h5>{t("builds_trust")}</h5>
@@ -221,10 +286,10 @@ const SliderSection = () => {
                 <div className="button-container">
                   <button>{buttonLabels[currentSlide]} </button>
                 </div>
-                <ArrowIcon />
+                <ArrowIcon className="desktop" />
               </div>
             ) : (
-              <h6 className="copyright">
+              <h6 className="copyright desktop">
                 {t("copyright")}
                 <span className="icon">
                   <CopyIcon />
@@ -234,7 +299,14 @@ const SliderSection = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {currentSlide === 0 && (
+        <div className="mobile">
+          <Footer />
+        </div>
+      )}
+      <div className="desktop">
+        <Footer />
+      </div>
     </>
   );
 };

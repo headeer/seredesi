@@ -7,7 +7,7 @@ export const LANGUAGES = [
   { code: "de", label: "Deutsch" },
   { code: "fr", label: "Français" },
   { code: "pl", label: "Polski" },
-  { code: "ar", label: "العربية" },
+  { code: "it", label: "Italian" },
 ];
 
 const LanguageMenu = () => {

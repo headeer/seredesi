@@ -1,0 +1,1062 @@
+.visual-section {
+  align-items: center;
+  width: calc(50% - get-vw(55px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  position: relative;
+  @include mobile-screen {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .empty_space {
+    width: get-vw(748px);
+    height: calc(50% - get-vw(44px));
+    @include mobile-screen {
+      display: none;
+    }
+  }
+  .copyright {
+    //styleName: footer_small;
+    font-family: "Unbounded";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    font-size: get-vw(11px);
+    font-weight: 300;
+    line-height: get-vw(22px);
+    letter-spacing: 0.22em;
+    text-align: right;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: get-vw(11px);
+    @include responsive-size(font-size, 18px);
+    @include responsive-size(line-height, 22px);
+    @include mobile-screen {
+      font-weight: 400;
+      letter-spacing: 0.11em;
+      text-align: right;
+    }
+    svg {
+      width: get-vw(11px);
+      height: get-vw(11px);
+    }
+    &::after {
+      opacity: 33%;
+      content: "";
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      background-color: $baby_blue;
+    }
+  }
+  .shape-container {
+    position: absolute;
+    @include responsive-size(margin-left, 10px);
+    @include responsive-size(top, 77px);
+    a {
+      display: none;
+    }
+    .shape {
+      width: 0;
+      height: 0;
+      border: none;
+      opacity: 0;
+    }
+  }
+  &.slide-1,
+  &.slide-2 {
+    .button-with-icon {
+      @include mobile-screen {
+        bottom: 0 !important;
+      }
+      @include responsive-size(margin-bottom, 33px!important);
+    }
+    .pagination {
+      @include responsive-size(margin-bottom, 44px!important);
+      @include mobile-screen {
+        bottom: 0 !important;
+        position: relative !important;
+      }
+    }
+  }
+  &.slide-0,
+  &.slide-1,
+  &.slide-2,
+  &.slide-3 {
+    .shape-container {
+      transition: all 0.88s ease-in-out;
+      .shape {
+        width: 0;
+        transition: all 0.88s ease-in-out;
+        height: 0;
+        opacity: 0;
+        border: 1px solid $baby_blue;
+      }
+    }
+  }
+  .shape-container {
+    bottom: 0;
+  }
+  &.slide-1 {
+    .shape-container {
+      right: get-vw(103px);
+    }
+  }
+  &.slide-0 {
+    .pagination {
+      @include mobile-screen {
+        position: absolute;
+        top: 44px;
+        transform: translateY(-6px);
+        opacity: 1;
+        animation: iconMoveUp 0.88s ease-out forwards;
+      }
+      @keyframes iconMoveUp {
+        0% {
+          transform: translateY(0); /* Starts from visible position */
+          opacity: 0;
+          top: get-vw(44px);
+        }
+        40% {
+          transform: translateY(-6px); /* Moves icon upward */
+          opacity: 0; /* Icon fades out */
+        }
+        60% {
+          top: get-vw(32px); /* Keeps it at the new position */
+        }
+        100% {
+          transform: translateY(-6px); /* Moves back to hidden position */
+          opacity: 1; /* Icon stays hidden */
+          top: get-vw(22px);
+        }
+      }
+    }
+    .shape-container {
+      width: get-vw(748px);
+      height: calc(50% - get-vw(44px));
+      gap: get-vw(22px);
+      transition: all 0.88s ease-in-out;
+      bottom: get-vw(44px);
+
+      @include mobile-screen {
+        height: 100%;
+      }
+
+      @include responsive-size(width, 327px);
+
+      .shape {
+        position: absolute;
+      }
+
+      .shape-1 {
+        width: get-vw(120px);
+        height: get-vw(320px);
+        @include responsive-size(width, 63px);
+        @include responsive-size(height, 177px);
+        top: 0;
+        left: 0;
+      }
+      .shape-2 {
+        width: get-vw(604px);
+        height: get-vw(44px);
+        left: get-vw(142px);
+        top: 0;
+        @include responsive-size(width, 51px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 74px);
+      }
+      .shape-3 {
+        width: get-vw(291px);
+        height: get-vw(188px);
+        top: get-vw(64px);
+        left: get-vw(142px);
+        @include responsive-size(width, 99px);
+        @include responsive-size(height, 67px);
+        @include responsive-size(left, 74px);
+        @include responsive-size(top, 55px);
+      }
+      .shape-4 {
+        top: get-vw(64px);
+        width: get-vw(291px);
+        left: get-vw(455px);
+        height: get-vw(188px);
+        @include responsive-size(width, 99px);
+        @include responsive-size(height, 67px);
+        @include responsive-size(left, 184px);
+        @include responsive-size(top, 55px);
+      }
+      .shape-5 {
+        width: get-vw(291px);
+        height: get-vw(44px);
+        top: get-vw(274px);
+        left: get-vw(142px);
+        @include responsive-size(width, 99px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 74px);
+        @include responsive-size(top, 133px);
+      }
+      .shape-6 {
+        left: get-vw(455px);
+        width: get-vw(291px);
+        height: get-vw(44px);
+        top: get-vw(274px);
+        @include responsive-size(width, 99px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 184px);
+        @include responsive-size(top, 133px);
+      }
+    }
+  }
+
+  &.slide-1 {
+    .pagination {
+      @include mobile-screen {
+        position: absolute;
+        transform: translateY(-6px);
+        opacity: 0;
+        animation: iconMoveDown 0.88s ease-out both;
+      }
+      @include responsive-size(bottom, 160px);
+    }
+
+    .shape-container {
+      width: get-vw(340px);
+      right: get-vw(103px);
+      height: calc(100% - get-vw(20px));
+      gap: get-vw(22px);
+      padding: get-vw(22px) 0;
+      @include responsive-size(left, 0px);
+      @include responsive-size(top, 0px);
+
+      .shape {
+        position: absolute;
+      }
+      .shape-1 {
+        top: get-vw(33px);
+        left: 0;
+        width: get-vw(159px);
+        height: get-vh(44px);
+        @include responsive-size(width, 108px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, 11px);
+      }
+      .shape-2 {
+        top: get-vw(33px);
+        left: get-vw(300px);
+        width: get-vw(44px);
+        height: get-vh(44px);
+        @include responsive-size(width, 44px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 238px);
+        @include responsive-size(top, 11px);
+      }
+      .shape-3 {
+        top: get-vw(110px);
+        left: 0;
+        width: get-vw(340px);
+        height: get-vh(188px);
+        @include responsive-size(width, 283px);
+        @include responsive-size(height, 67px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, 66px);
+      }
+      .shape-4 {
+        top: get-vw(288px);
+        left: 0;
+        width: get-vw(340px);
+        height: get-vh(298px);
+        @include responsive-size(width, 283px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, 144px);
+        @include mobile-screen {
+          opacity: 0 !important;
+          width: 0;
+          height: 0;
+        }
+      }
+      .shape-5 {
+        top: get-vw(554px);
+        left: 0;
+        width: get-vw(340px);
+        height: get-vh(44px);
+        @include responsive-size(width, 0px);
+        @include responsive-size(height, 0px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, 0px);
+        @include mobile-screen {
+          opacity: 0 !important;
+          width: 0;
+          height: 0;
+        }
+      }
+      .shape-6 {
+        opacity: 0 !important;
+        width: 0;
+        height: 0;
+        left: get-vw(455px);
+        top: get-vw(274px);
+        @include mobile-screen {
+          opacity: 1 !important;
+        }
+        @include responsive-size(width, 283px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, 144px);
+      }
+    }
+  }
+  .empty_space .content {
+    opacity: 0;
+  }
+  &.slide-2 {
+    .pagination {
+      @include mobile-screen {
+        position: absolute;
+        transform: translateY(-6px);
+        opacity: 0;
+        animation: iconMoveDown 0.88s ease-out both;
+      }
+      @include responsive-size(bottom, 160px);
+    }
+
+    .empty_space {
+      opacity: 1;
+      .content {
+        animation-delay: 0.33s;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        animation: cubic-bezier(1, 0, 0, 1) show 0.88s;
+        margin-top: get-vw(22px);
+        .row {
+          height: get-vw(127px);
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-between;
+        }
+        h5 {
+          //styleName: benefits;
+          font-family: "Unbounded";
+          font-size: get-vw(13px);
+          font-weight: 500;
+          line-height: get-vw(19px);
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          text-align: right;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+        }
+        p {
+          //styleName: hero_content;
+          font-family: "Unbounded";
+          font-size: get-vw(24px);
+          font-weight: 300;
+          line-height: get-vw(44px);
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          margin-top: get-vw(66px);
+        }
+      }
+    }
+    .shape-container {
+      gap: get-vw(22px);
+      width: get-vw(748px);
+      height: calc(50% - get-vw(44px));
+      bottom: calc(50% + get-vw(22px));
+      right: get-vw(22px);
+      @include responsive-size(left, 0px);
+      @include responsive-size(top, 11px);
+      .shape {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+      }
+      .shape-1 {
+        width: get-vw(120px);
+        height: get-vw(320px);
+        top: 0;
+        left: 0;
+        @include responsive-size(width, 250px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, 0px);
+      }
+      .shape-2 {
+        width: get-vw(604px);
+        height: get-vw(44px);
+        left: get-vw(142px);
+        top: 0;
+        @include responsive-size(width, 44px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 261px);
+        @include responsive-size(top, 0px);
+      }
+      .shape-3 {
+        width: get-vw(291px);
+        height: get-vw(188px);
+        top: get-vw(64px);
+        left: get-vw(142px);
+        @include responsive-size(width, 305px);
+        @include responsive-size(height, 67px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, 55px);
+      }
+      .shape-4 {
+        top: get-vw(64px);
+        width: get-vw(291px);
+        left: get-vw(455px);
+        height: get-vw(188px);
+        @include mobile-screen {
+          opacity: 0 !important;
+          width: 0;
+          height: 0;
+        }
+      }
+      .shape-5 {
+        width: get-vw(291px);
+        height: get-vw(44px);
+        top: get-vw(274px);
+        left: get-vw(142px);
+        opacity: 33%;
+        @include mobile-screen {
+          opacity: 0 !important;
+          width: 0;
+          height: 0;
+        }
+      }
+      .shape-6 {
+        left: get-vw(455px);
+        width: get-vw(291px);
+        height: get-vw(44px);
+        top: get-vw(274px);
+        background-color: $baby_blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include responsive-size(width, 305px);
+        @include responsive-size(height, 44px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, 133px);
+        a {
+          display: block;
+          color: #181818;
+          //styleName: CTA_small;
+          cursor: pointer;
+          font-family: "Unbounded";
+          font-size: get-vw(17px);
+          font-weight: 500;
+          line-height: get-vw(21px);
+          letter-spacing: 0.44em;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          @include mobile-screen {
+            font-family: "Unbounded";
+            font-weight: 500;
+            letter-spacing: 0.44em;
+          }
+          @include responsive-size(font-size, 17px);
+          @include responsive-size(line-height, 21px);
+        }
+      }
+    }
+  }
+  &.slide-3 {
+    @include mobile-screen {
+      justify-content: flex-start;
+    }
+    .shape-container {
+      width: 100%;
+      z-index: -1;
+      height: 100%;
+      .shape {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        opacity: 0 !important;
+      }
+      .shape-1 {
+        width: calc(100% - get-vw(44px));
+        height: get-vw(44px);
+        top: get-vw(40px);
+        left: 0;
+        @include responsive-size(width, 316px);
+        @include responsive-size(height, 21px);
+        @include responsive-size(left, 0px);
+        @include responsive-size(top, -54px);
+      }
+      .shape-2 {
+        width: calc(100% - get-vw(44px));
+        height: get-vw(221px);
+        left: 0;
+        top: get-vw(104px);
+        z-index: -1;
+        @include responsive-size(width, 327px);
+        @include responsive-size(height, 114px);
+        @include responsive-size(left, -10px);
+        @include responsive-size(top, -12px);
+      }
+      .shape-3 {
+        width: calc(33% - get-vw(52px));
+        height: get-vw(41px);
+        top: get-vw(434px);
+        border-radius: 0;
+        left: 0;
+        @include responsive-size(width, 327px);
+        @include responsive-size(height, 41px);
+        @include responsive-size(left, -10px);
+        @include responsive-size(top, 216px);
+      }
+      .shape-4 {
+        width: calc(33% - get-vw(44px));
+        left: calc(33% - get-vw(44px));
+        top: get-vw(434px);
+        border-radius: 0;
+        height: get-vw(41px);
+        @include responsive-size(width, 327px);
+        @include responsive-size(height, 41px);
+        @include responsive-size(left, -10px);
+        @include responsive-size(top, 279px);
+      }
+      .shape-5 {
+        width: calc(33% + get-vw(32px));
+        height: get-vw(41px);
+        top: get-vw(434px);
+        border-radius: 0;
+        // border: none;
+        // border-bottom: 1px solid $baby_blue;
+        left: calc(66% - get-vw(68px));
+        @include responsive-size(width, 327px);
+        @include responsive-size(height, 41px);
+        @include responsive-size(left, -10px);
+        @include responsive-size(top, 337px);
+      }
+      .shape-6 {
+        left: get-vw(496px);
+        width: get-vw(234px);
+        height: get-vw(45px);
+        top: get-vw(507px);
+        @include responsive-size(width, 327px);
+        @include responsive-size(height, 41px);
+        @include responsive-size(left, -10px);
+        @include responsive-size(top, 500px);
+      }
+    }
+  }
+  &.slide-4 {
+    @include mobile-screen {
+      display: none;
+    }
+    .pagination,
+    .button-with-icon {
+      display: none;
+    }
+    form {
+      opacity: 1;
+      input,
+      textarea {
+        pointer-events: none;
+      }
+      button {
+        background: $elegant_green;
+        color: $baby_blue;
+        pointer-events: none;
+        &::before {
+          content: none;
+        }
+      }
+    }
+  }
+  &.slide-3 {
+    padding: get-vw(22px);
+    @include mobile-screen {
+      padding: 0;
+    }
+  }
+  .shape {
+    background: transparent;
+    border: 1px solid $baby_blue;
+    transition: all 0.6s ease-in-out;
+    transform-origin: center;
+    width: 100%;
+    height: 100%;
+
+    &.shape {
+      border-radius: 22px;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    z-index: 1;
+    gap: get-vw(22px);
+    margin: get-vw(22px) 0;
+    position: relative;
+    top: get-vw(-20px);
+    @include responsive-size(gap, 22px);
+    @include responsive-size(margin, 10px 0px 0);
+    @include mobile-screen {
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-end;
+      .mobile {
+        transform: rotate(90deg);
+      }
+    }
+    svg {
+      @include responsive-size(width, 34px);
+      @include responsive-size(margin-left, 11px);
+    }
+    .dot {
+      width: get-vw(44px);
+      height: get-vw(11px);
+      border-radius: 11px;
+      cursor: pointer;
+      border: get-vw(1px) solid $baby_blue;
+      background: transparent;
+      transition: background 0.3s ease;
+      @include responsive-size(width, 44px);
+      @include responsive-size(height, 11px);
+      &.active {
+        background: $baby_blue;
+      }
+    }
+  }
+  .button-with-icon {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    @include responsive-size(bottom, 76px);
+    justify-content: flex-end;
+    text-align: right;
+
+    svg {
+      transform: rotate(90deg);
+      position: relative;
+      right: get-vw(-31px);
+      height: get-vw(36px);
+    }
+  }
+  .button-container {
+    position: relative;
+    width: 100%;
+  }
+  button {
+    font-family: "Unbounded", sans-serif;
+    font-size: get-vw(24px);
+    font-weight: 400;
+    line-height: get-vw(29.76px);
+    letter-spacing: 0.11em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: $baby_blue;
+    @include responsive-size(font-size, 18px);
+    @include responsive-size(line-height, 22px);
+    @include mobile-screen {
+      font-weight: 400;
+      letter-spacing: 0.11em;
+      text-align: right;
+    }
+    &:hover {
+      &::after {
+        width: 0;
+      }
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: get-vw(2px);
+      position: absolute;
+      bottom: get-vw(-2px);
+      left: 0;
+      background: $baby_blue;
+      transition: width 0.3s;
+    }
+    @include mobile-screen {
+      &::after {
+        content: none;
+      }
+    }
+  }
+  &.slide-3 {
+    form {
+      opacity: 1;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: get-vw(22px);
+    opacity: 0;
+    animation: show ease-in-out 3s;
+    @include responsive-size(gap, 22px);
+    .form-submit {
+      width: get-vw(234px);
+      padding: get-vw(11px) 0px get-vw(11px) 0px;
+      border-radius: 22px;
+      //styleName: CTA_small;
+      font-family: "Unbounded";
+      font-size: get-vw(17px);
+      font-weight: 500;
+      line-height: get-vw(21px);
+      letter-spacing: 0.44em;
+      text-align: center;
+      background-color: $baby_blue;
+      color: #181818;
+      text-transform: uppercase;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+    }
+    /* Phone Input Customization */
+    .phone-input-container {
+      width: 100%;
+      background: transparent;
+      border-bottom: 1px solid $baby_blue;
+      transition: border 0.3s ease;
+      display: flex;
+      align-items: center;
+
+      &:focus-within {
+        border-color: lighten($baby_blue, 20%);
+      }
+    }
+
+    .phone-input {
+      background: transparent !important;
+      border: none !important;
+      color: $baby_blue !important;
+      width: 100%;
+      //styleName: benefits;
+      font-family: "Unbounded";
+      font-size: get-vw(13px);
+      font-weight: 500;
+      line-height: get-vw(19px);
+      letter-spacing: 0.22em;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      @include mobile-screen {
+        font-family: "Unbounded";
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        max-width: 100%;
+      }
+      @include responsive-size(font-size, 13px);
+      @include responsive-size(line-height, 19px);
+      &::placeholder {
+        color: lighten($baby_blue, 20%) !important;
+        font-family: "Unbounded";
+        font-size: get-vw(13px);
+        font-weight: 500;
+        line-height: get-vw(19px);
+        letter-spacing: 0.22em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+      }
+    }
+
+    .phone-dropdown-button {
+      background: transparent !important;
+      border: none !important;
+      color: $baby_blue !important;
+    }
+    input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid $baby_blue;
+      color: $baby_blue;
+      width: 100%;
+      max-width: 200px;
+      @include mobile-screen {
+        font-family: "Unbounded";
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        max-width: 100%;
+      }
+      @include responsive-size(font-size, 13px);
+      @include responsive-size(line-height, 19px);
+      &::placeholder {
+        font-family: "Unbounded";
+        font-size: get-vw(13px);
+        text-transform: uppercase;
+        color: $baby_blue;
+        font-weight: 500;
+        line-height: get-vw(19px);
+        letter-spacing: 0.22em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        @include mobile-screen {
+          font-family: "Unbounded";
+          font-weight: 500;
+          letter-spacing: 0.22em;
+          max-width: 100%;
+        }
+        @include responsive-size(font-size, 13px);
+        @include responsive-size(line-height, 19px);
+      }
+    }
+    button {
+      position: relative;
+      &::after {
+        content: none;
+      }
+    }
+    .call {
+      width: 100%;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 33% !important;
+      border: 1px solid $baby_blue;
+      height: get-vw(44px);
+      cursor: pointer;
+      transition: 0.33s ease-in-out all;
+      @include mobile-screen {
+        border: none;
+        opacity: 1 !important;
+      }
+      @include responsive-size(height, 21px);
+      @include responsive-size(margin-top, 22px);
+      a {
+        @include mobile-screen {
+          font-family: "Unbounded";
+          font-weight: 500;
+          letter-spacing: 0.44em;
+          text-align: center;
+        }
+        @include responsive-size(font-size, 17px);
+        @include responsive-size(line-height, 21px);
+      }
+      &:hover {
+        opacity: 1 !important;
+        background-color: $baby_blue;
+        a {
+          color: #181818;
+        }
+      }
+    }
+
+    textarea {
+      background: transparent;
+      border: 1px solid $baby_blue;
+      color: $baby_blue;
+      font-family: "Unbounded";
+      font-size: get-vw(11px);
+      font-weight: 400;
+      line-height: get-vw(17px);
+      letter-spacing: 0.11em;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      @include mobile-screen {
+        font-family: "Unbounded";
+        font-weight: 400;
+        letter-spacing: 0.11em;
+      }
+      @include responsive-size(font-size, 11px);
+      @include responsive-size(line-height, 17px);
+      @include responsive-size(padding, 22px);
+      @include responsive-size(height, 114px);
+      &::placeholder {
+        color: $baby_blue;
+        font-family: "Unbounded";
+        font-size: get-vw(11px);
+        font-weight: 400;
+        line-height: get-vw(17px);
+        letter-spacing: 0.11em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        @include mobile-screen {
+          font-family: "Unbounded";
+          font-weight: 400;
+          letter-spacing: 0.11em;
+        }
+        @include responsive-size(font-size, 11px);
+        @include responsive-size(line-height, 17px);
+      }
+    }
+    .concent-button-group {
+      display: flex;
+      flex-direction: row;
+      gap: get-vw(22px);
+      margin: get-vw(11px) 0 get-vw(26px);
+
+      @include mobile-screen {
+        flex-direction: column;
+        margin: 0;
+      }
+      @include responsive-size(margin-top, 11px);
+      input {
+        width: get-vw(18px);
+        height: get-vw(18px);
+      }
+      label {
+        font-family: "Unbounded";
+        font-size: get-vw(11px);
+        font-weight: 400;
+        line-height: get-vw(17px);
+        letter-spacing: 0.11em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+
+        @include responsive-size(gap, 10px);
+        @include mobile-screen {
+          font-weight: 400;
+          letter-spacing: 0.11em;
+        }
+        @include responsive-size(font-size, 11px);
+        @include responsive-size(padding-left, 32px);
+        @include responsive-size(line-height, 17px);
+        &::before {
+          @include responsive-size(top, 10px);
+        }
+        a {
+          font-family: "Unbounded";
+          font-size: get-vw(11px);
+          font-weight: 400;
+          line-height: get-vw(17px);
+          letter-spacing: 0.11em;
+          text-align: left;
+          text-decoration-line: underline;
+          text-decoration-style: solid;
+          text-transform: lowercase;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: auto;
+          @include mobile-screen {
+            font-weight: 400;
+            letter-spacing: 0.11em;
+          }
+          @include responsive-size(font-size, 11px);
+          @include responsive-size(line-height, 17px);
+        }
+      }
+      button {
+        width: 100%;
+        max-width: get-vw(234px);
+        height: get-vw(43px);
+        border-radius: 22px;
+        //styleName: CTA_small;
+        font-family: "Unbounded";
+        font-size: get-vw(17px);
+        font-weight: 500;
+        line-height: get-vw(21px);
+        letter-spacing: 0.44em;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        @include mobile-screen {
+          font-weight: 500;
+          letter-spacing: 0.44em;
+          max-width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+
+          svg {
+            transform: rotate(90deg);
+            path {
+              fill: #181818;
+            }
+            stroke: #181818;
+          }
+        }
+        @include responsive-size(font-size, 17px);
+        @include responsive-size(height, 43px);
+        @include responsive-size(gap, 11px);
+        @include responsive-size(line-height, 21px);
+        @include responsive-size(margin-top, 33px);
+      }
+    }
+    h3 {
+      //styleName: hero_content;
+      font-family: "Unbounded";
+      font-size: get-vw(24px);
+      font-weight: 300;
+      line-height: get-vw(44px);
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      @include mobile-screen {
+        font-family: "Unbounded";
+        font-weight: 300;
+        letter-spacing: 0em;
+      }
+      @include responsive-size(font-size, 26px);
+      @include responsive-size(line-height, 33px);
+    }
+    h4 {
+      //styleName: benefits;
+      font-family: "Unbounded";
+      font-size: get-vw(13px);
+      font-weight: 500;
+      line-height: get-vw(19px);
+      letter-spacing: 0.22em;
+      text-align: right;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      display: flex;
+      flex-direction: row;
+      gap: get-vw(11px);
+      margin-top: get-vw(44px);
+      @include mobile-screen {
+        display: none;
+        font-family: "Unbounded";
+        font-weight: 300;
+        letter-spacing: 0;
+      }
+      @include responsive-size(font-size, 16px);
+      @include responsive-size(line-height, 28px);
+      img {
+        width: get-vw(16px);
+        height: get-vw(16px);
+        animation: pulse 1.5s infinite ease-in-out; /* Apply the pulse animation */
+      }
+    }
+  }
+}
+@keyframes iconMoveDown {
+  0% {
+    transform: translateY(-6px); /* Starts slightly above */
+    @include responsive-size(bottom, 390px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateY(6px); /* Moves icon downward */
+    opacity: 0; /* Icon fades out */
+  }
+  100% {
+    transform: translateY(0); /* Moves back to final position */
+    opacity: 1; /* Icon becomes visible */
+    @include responsive-size(bottom, 160px);
+  }
+}

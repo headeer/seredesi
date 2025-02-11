@@ -1,21 +1,47 @@
 body {
   font-family: "Unbounded", sans-serif;
-  background: $background;
+  background: $bg_primary;
   margin: 0 auto;
   color: $baby_blue;
   padding: 0;
   height: 100vh;
-  max-height: 100vh;
-  overflow: hidden;
   padding: get-vw(10px);
+  @include mobile-screen {
+  }
   #root,
   .app {
     height: 100%;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 22px;
+    -webkit-box-shadow: inset 0 0 6px #181818;
+    background-color: $baby_blue;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 10px;
+    border-radius: 22px;
+    background-color: $baby_blue;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #181818;
+    border-radius: 22px;
+  }
+  .mobile-menu-icon-container {
+    cursor: pointer;
+    svg path {
+      transition: all 0.33s ease-in-out;
+    }
   }
 }
 .app {
   display: flex;
   flex-direction: row;
+  @include mobile-screen {
+    flex-direction: column;
+  }
 }
 ::selection {
   color: #181818;
@@ -39,6 +65,20 @@ a {
 .bold {
   font-weight: 700;
 }
+.home-1,
+.home-2 {
+  section.center {
+    @include responsive-size(min-height, 600px);
+  }
+}
+.home-3,
+.home-4 {
+  section.center {
+    @include mobile-screen {
+      min-height: auto;
+    }
+  }
+}
 section {
   &.center {
     height: 100%;
@@ -46,6 +86,13 @@ section {
     display: flex;
     margin: 0 get-vw(20px) 0 get-vw(32px);
     flex-direction: column;
+    @include responsive-size(min-height, 650px);
+    @include mobile-screen {
+      margin: 0;
+      .navigation {
+        display: none;
+      }
+    }
   }
 }
 ul {
@@ -140,6 +187,47 @@ input {
 .mobile {
   @media screen and (min-width: 768px) {
     display: none !important;
+  }
+}
+button.submit {
+  transition: all ease-in-out 0.33s;
+  position: relative;
+  &::before {
+    transition: all ease-in-out 0.33s;
+    width: 100%;
+    height: get-vw(43px);
+    content: "";
+    border-radius: 22px;
+    z-index: -1;
+    background-color: $elegant_green;
+    border: 1px solid $baby_blue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all ease-in-out 0.33s;
+    @include responsive-size(height, 43px);
+  }
+  &:hover {
+    &::before {
+      width: 100%;
+      height: get-vw(54px);
+      content: "";
+      border-radius: 22px;
+      z-index: -1;
+      background-color: $elegant_green;
+      border: 1px solid $baby_blue;
+      position: absolute;
+      bottom: get-vw(-11px);
+      left: 0;
+      transition: all ease-in-out 0.33s;
+      @include responsive-size(height, 54px);
+      @include responsive-size(bottom, -11px);
+    }
+  }
+  &:active {
+    background: $background;
+    border: 1px solid $baby_blue;
+    color: $baby_blue !important;
   }
 }
 .btn {
@@ -408,6 +496,7 @@ body .react-tel-input .country-list {
     height: calc(var(--size) - (var(--border-size) * 2));
     margin-top: calc(var(--size) / -2);
     pointer-events: none;
+    @include responsive-size(top, 12px);
   }
 
   .checkbox-wrapper-32 svg path {

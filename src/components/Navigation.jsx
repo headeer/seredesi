@@ -1,27 +1,33 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSlide } from "../context/SlideContext";
 
 const Navigation = () => {
-  const location = useLocation();
   const { t } = useTranslation();
+  const { setCurrentSlide, currentSlide } = useSlide();
 
   const navItems = [
-    { name: t("what_is"), path: "/" },
-    { name: t("who_gain"), path: "/who-gain" },
-    { name: t("how_to_use"), path: "/how-to-use" },
-    { name: t("try_us"), path: "/try-us" },
+    { name: t("what_is"), slide: 0 },
+    { name: t("who_gain"), slide: 1 },
+    { name: t("how_to_use"), slide: 2 },
+    { name: t("try_us"), slide: 3 },
   ];
+
+  const handleNavigation = (slide) => {
+    setCurrentSlide(slide);
+  };
 
   return (
     <nav className="navigation">
       <ul>
         {navItems.map((item) => (
           <li
-            key={item.path}
-            className={location.pathname === item.path ? "active" : ""}
+            key={item.slide}
+            className={currentSlide === item.slide ? "active" : ""}
           >
-            <Link to={item.path}>{item.name}</Link>
+            <button onClick={() => handleNavigation(item.slide)}>
+              {item.name}
+            </button>
           </li>
         ))}
       </ul>
