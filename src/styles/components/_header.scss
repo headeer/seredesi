@@ -295,6 +295,7 @@ header {
         align-items: center;
         justify-content: flex-start;
         width: 100%;
+        padding: 0;
         svg {
           @include responsive-size(width, 21px);
           @include responsive-size(height, 30px);

@@ -61,7 +61,7 @@
   .shape-container {
     position: absolute;
     @include responsive-size(margin-left, 10px);
-    @include responsive-size(top, 77px);
+    @include responsive-size(top, 66px);
     a {
       display: none;
     }
@@ -844,7 +844,7 @@
       }
       @include responsive-size(height, 21px);
       @include responsive-size(margin-top, 22px);
-      a {
+      span {
         @include mobile-screen {
           font-family: "Unbounded";
           font-weight: 500;
@@ -857,7 +857,7 @@
       &:hover {
         opacity: 1 !important;
         background-color: $baby_blue;
-        a {
+        span {
           color: #181818;
         }
       }

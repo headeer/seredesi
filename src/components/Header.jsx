@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "./Logo.jsx";
 import LanguageMenu from "./LanguageMenu.jsx";
 import { useSlide } from "../context/SlideContext.jsx";

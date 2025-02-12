@@ -1,48 +1,37 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { ReactComponent as SvgBackgroundMadeira } from "../../assets/travels/svg_background_madeira.svg";
-import { ReactComponent as ArrowIcon } from "../../assets/arrow_icon.svg";
 import { ReactComponent as Handstand } from "../../assets/travels/handstand.svg";
 import PuzzleGrid from "./PuzzleGrid";
 import { useTranslation } from "react-i18next";
 import PuzzleGame from "./PuzzleGame";
 
-const SolvePuzzle = ({ onPuzzleSolved }) => {
+const SolvePuzzle = ({ onPuzzleSolved, setAnimationStageBg }) => {
   const { t } = useTranslation();
   const [animationStage, setAnimationStage] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
-  const [gameWon, setGameWon] = useState(false);
-  const backgroundRef = useRef(null);
-  const [pathLength, setPathLength] = useState(0);
+  const [startGameAnimation, setStartGameAnimation] = useState(false);
 
-  useEffect(() => {
-    if (backgroundRef.current) {
-      const path = backgroundRef.current.querySelector("path");
-      if (path) {
-        const totalLength = path.getTotalLength();
-        setPathLength(totalLength);
-      }
-    }
-  }, []);
+  const [gameWon, setGameWon] = useState(false);
+
   const gameWin = () => {
     setGameWon(true);
     setTimeout(() => {
       onPuzzleSolved();
-    }, 2000);
+    }, 1500);
   };
   const handleStartOrRestart = () => {
-    if (gameWon) return; // Prevent starting if game is won
+    if (gameWon) return;
 
     if (gameStarted) {
       setGameStarted(false);
       setGameWon(false);
-      setAnimationStage(0);
     } else {
-      setAnimationStage(1);
-      setTimeout(() => setAnimationStage(2), 330);
-      setTimeout(() => setAnimationStage(3), 660);
+      setStartGameAnimation(true);
       setTimeout(() => {
+        setStartGameAnimation(false);
         setGameStarted(true);
-      }, 1000);
+        setAnimationStageBg(1);
+      }, 660);
     }
   };
 
@@ -52,10 +41,14 @@ const SolvePuzzle = ({ onPuzzleSolved }) => {
       <h1>{t("solve_the_puzzle")}</h1>
       <p className="discover">{t("discover_the_secret_of_the_goal")}</p>
 
-      <div className="puzzle-grid-container">
+      <div
+        className={`puzzle-grid-container ${
+          startGameAnimation ? "start-game" : ""
+        }`}
+      >
         {!gameStarted && (
           <>
-            <SvgBackgroundMadeira ref={backgroundRef} className="background" />
+            <SvgBackgroundMadeira className="background" />
             <Handstand className="handstand" />
             <PuzzleGrid />
             <h4>

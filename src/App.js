@@ -23,7 +23,7 @@ const App = () => {
       <Router>
         <div className="app">
           {isLoading ? (
-            <Loader duration={1500} />
+            <Loader />
           ) : (
             <>
               <Header />

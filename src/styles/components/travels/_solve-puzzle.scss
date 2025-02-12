@@ -1,5 +1,8 @@
 .travels {
   height: 100%;
+  overflow: hidden;
+  max-width: 360px;
+  margin: 0 auto;
 }
 .solve-puzzle-container {
   height: 100%;
@@ -7,14 +10,14 @@
   flex-direction: column;
   max-width: 360px;
   position: relative;
-  @include responsive-size(gap, 22px);
-  @include responsive-size(padding, 22px);
+  gap: 22px;
+  padding: 22px;
   .small-text {
     font-family: "Unbounded";
     font-weight: 400;
     letter-spacing: 0.44em;
-    @include responsive-size(font-size, 13px);
-    @include responsive-size(line-height, 22px);
+    font-size: 13px;
+    line-height: 22px;
   }
   h1 {
     font-family: "Unbounded";
@@ -23,9 +26,9 @@
     line-height: 39px;
     letter-spacing: 0;
     position: relative;
-    @include responsive-size(font-size, 29px);
-    @include responsive-size(line-height, 39px);
-    &::after {
+    font-size: 29px;
+    line-height: 39px;
+    &:after {
       content: "";
       position: absolute;
       width: 100%;
@@ -39,8 +42,8 @@
     font-family: "Unbounded";
     font-weight: 300;
     letter-spacing: 0;
-    @include responsive-size(font-size, 16px);
-    @include responsive-size(line-height, 28px);
+    font-size: 16px;
+    line-height: 28px;
   }
   .puzzle-grid-container {
     display: flex;
@@ -49,21 +52,32 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    &.start-game {
+      h4,
+      h5 {
+        animation: fadeOut 0.66s ease-out;
+        opacity: 0;
+      }
+      .puzzle-grid {
+        // animation: fadeOut 0.66s ease-out;
+        // opacity: 0;
+      }
+    }
     .background {
       position: absolute;
       top: 0;
       left: 0;
-      @include responsive-size(width, 320px);
-      @include responsive-size(height, 320px);
+      width: 320px;
+      height: 320px;
     }
     .handstand {
       position: absolute;
       top: 0;
-      @include responsive-size(width, 18px);
-      @include responsive-size(height, 64px);
-      @include responsive-size(top, 55px);
+      width: 18px;
+      height: 64px;
+      top: 55px;
       z-index: 2;
-      @include responsive-size(left, 155px);
+      left: 155px;
     }
   }
   .arrow {
@@ -81,11 +95,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    @include responsive-size(gap, 33px);
+    gap: 33px;
 
     .slider-indicator {
-      @include responsive-size(width, 176px);
-      @include responsive-size(height, 11px);
+      width: 176px;
+      height: 11px;
       border: 1px solid $baby_blue;
       border-radius: 22px;
     }
@@ -109,10 +123,10 @@
     border: 1px solid $uido-active;
     border-bottom: none;
     cursor: pointer;
-    @include responsive-size(padding, 11px 22px);
-    @include responsive-size(font-size, 17px);
-    @include responsive-size(line-height, 21px);
-    @include responsive-size(max-width, 316px);
+    padding: 11px 22px;
+    font-size: 17px;
+    line-height: 21px;
+    max-width: 316px;
     background: transparent;
     outline: none;
     transform: translateX(-50%);
@@ -126,15 +140,15 @@
     color: $baby_blue;
     align-items: center;
     justify-content: center;
-    @include responsive-size(left, 20px);
-    @include responsive-size(gap, 8px);
-    @include responsive-size(top, 36px);
+    left: 20px;
+    gap: 8px;
+    top: 36px;
     position: absolute;
     span {
       color: $uido-active;
     }
-    @include responsive-size(font-size, 29px);
-    @include responsive-size(line-height, 39px);
+    font-size: 29px;
+    line-height: 39px;
   }
   h5 {
     font-family: "Unbounded";
@@ -146,12 +160,24 @@
     span {
       color: $baby_blue;
     }
-    @include responsive-size(font-size, 13px);
-    @include responsive-size(line-height, 19px);
-    @include responsive-size(max-width, 145px);
-    @include responsive-size(right, 22px);
-    @include responsive-size(bottom, 32px);
+    font-size: 13px;
+    line-height: 19px;
+    max-width: 145px;
+    right: 22px;
+    bottom: 32px;
     position: absolute;
+  }
+}
+.puzzle-game-container {
+  animation: fadeIn 0.33s ease-out;
+  .tile {
+    background-color: $bg_primary;
+    border-radius: 22px;
+    border: 2px solid $elegant_green;
+
+    &.bg_green {
+      background-color: $elegant_green;
+    }
   }
 }
 .puzzle-game-container {
@@ -159,21 +185,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   border-radius: 22px;
 
   .puzzle-grid {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
-    gap: 5px;
-    border-radius: 5px;
+    gap: 11px;
   }
 
   .tile {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid $elegant_green;
     cursor: pointer;
     transition: transform 0.2s ease, background 0.3s ease;
 
@@ -181,7 +206,7 @@
     }
 
     &.empty {
-      border: 2px dashed #bbb;
+      border: 2px solid $uido-active;
       cursor: default;
     }
 
@@ -220,23 +245,27 @@
 }
 .travels {
   .solved-puzzle {
-    @include responsive-size(gap, 10px);
+    gap: 10px;
     h1 {
       font-family: "Unbounded";
       font-weight: 500;
       letter-spacing: 0.03em;
-      @include responsive-size(font-size, 44px);
-      @include responsive-size(margin-top, 12px);
-      @include responsive-size(line-height, 39px);
+      display: flex;
+      flex-direction: row;
+
+      font-size: 44px;
+      margin-top: 12px;
+      line-height: 39px;
       svg {
-        @include responsive-size(width, 35px);
-        @include responsive-size(height, 36px);
+        width: 35px;
+        height: 36px;
+        margin-left: 22px;
         background: $baby_blue;
         path {
           fill: #181818;
         }
       }
-      &::after {
+      &:after {
         content: none;
       }
     }
@@ -244,22 +273,22 @@
       font-family: "Unbounded";
       font-weight: 300;
       letter-spacing: 0;
-      @include responsive-size(font-size, 29px);
-      @include responsive-size(line-height, 39px);
-      @include responsive-size(margin-bottom, 12px);
+      font-size: 29px;
+      line-height: 39px;
+      margin-bottom: 12px;
     }
     .discover_more {
-      @include responsive-size(margin-top, 12px);
+      margin-top: 12px;
     }
     h6 {
       font-family: "Unbounded";
       font-weight: 400;
       letter-spacing: 0.44em;
       text-align: center;
-      @include responsive-size(font-size, 13px);
-      @include responsive-size(line-height, 22px);
+      font-size: 13px;
+      line-height: 22px;
       position: absolute;
-      @include responsive-size(bottom, 65px);
+      bottom: 65px;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
@@ -269,13 +298,25 @@
       border: none;
       color: #181818;
       position: relative;
-      @include responsive-size(padding, 11px 12px);
+      padding: 11px 12px;
     }
     .travel_background {
       position: absolute;
       bottom: 0;
       z-index: -1;
-      left: 0;
+      left: -260px;
+      top: 346px;
+      transition: all 0.33s ease-in-out;
+      &.expanded {
+        @include mobile-screen {
+          top: 18.8vh;
+          z-index: 0;
+          .human_fill,
+          .houman_stroke {
+            animation: moveUpDown 0.66s ease-out forwards; /* Trigger the character animation */
+          }
+        }
+      }
     }
   }
 }
@@ -286,6 +327,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
+  z-index: 1;
 }
 
 .start-game-button {
@@ -302,7 +344,7 @@
   margin: 0 auto;
   opacity: 0;
   transition: all 0.33s ease-in-out;
-  @include responsive-size(max-width, 316px);
+  max-width: 316px;
   background: linear-gradient(
       0deg,
       rgba(24, 24, 24, 0.44),
@@ -315,23 +357,28 @@
     font-family: "Unbounded";
     font-weight: 400;
     letter-spacing: 0.11em;
-    @include responsive-size(font-size, 11px);
-    @include responsive-size(margin, 10px 0 0);
-    @include responsive-size(line-height, 17px);
+    font-size: 11px;
+    margin: 10px 0 0;
+    line-height: 17px;
   }
   .big-link {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    @include responsive-size(gap, 11px);
     font-family: "Unbounded";
-    font-weight: 500;
+    font-weight: 300;
     letter-spacing: 0;
     text-align: center;
-    @include responsive-size(font-size, 16px);
-    @include responsive-size(line-height, 28px);
+    font-size: 16px;
+    line-height: 28px;
     text-transform: initial;
+    span {
+      font-weight: 500;
+    }
+    svg {
+      margin-right: 11px;
+    }
   }
   .social-section {
     display: flex;
@@ -342,14 +389,13 @@
   .hidden-section {
     display: flex;
     flex-direction: column;
-    @include responsive-size(gap, 11px);
-    @include responsive-size(margin, 10px 0);
+    gap: 11px;
+    margin: 10px 0;
 
     align-items: flex-start;
     justify-content: flex-start;
   }
 }
-
 .travels .button-and-content.expanded {
   .meet-seredesi-button {
     border: 1px solid $uido-active;
@@ -357,9 +403,140 @@
     background-color: $uido-active;
   }
   .hidden-content.visible {
+    z-index: 2;
+
     max-height: 500px; // Adjust based on content size
-    @include responsive-size(max-width, 316px);
-    @include responsive-size(padding, 11px 22px);
+    max-width: 316px;
+    padding: 11px 22px;
     opacity: 1;
   }
+}
+.travels {
+  .background {
+  }
+}
+
+@keyframes moveUpDown {
+  0%,
+  100% {
+    transform: translateY(0); /* Start and end at the original position */
+  }
+  25% {
+    // transform: translateY(100%); /* Move down by the height of the element */
+  }
+  50% {
+    transform: scaleY(0.87); /* Decrease height by about 13% */
+  }
+  75% {
+    transform: translateY(0%); /* Return to original position */
+  }
+}
+
+.travel_background.expanded {
+  animation: bounceOut 0.33s ease-out; /* Apply the bounce animation when expanded */
+}
+.human_fill {
+  fill: $uido-active;
+  stroke: $uido-active;
+}
+.human_stroke {
+  stroke: $uido-active;
+}
+
+@keyframes bounceOut {
+  0% {
+    transform: scale(1); /* Start at normal size */
+  }
+  50% {
+    transform: scale(1.13); /* Enlarge to 113% */
+  }
+  100% {
+    transform: scale(1); /* Return to normal size */
+  }
+}
+.instagram-sidebar-container {
+  position: fixed;
+  right: 0;
+  top: 35%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.sidebar-icon {
+  cursor: pointer;
+  transition: all 0.33s ease;
+  width: 48px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $elegant_green;
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 22px;
+  border: 1px solid $uido-active;
+  border-right: 0;
+  &.open {
+    transform: translateX(-266px);
+  }
+}
+
+.sidebar-content {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: $bg_primary;
+  border: 1px solid $uido-active;
+  width: 266px;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.33s ease;
+}
+
+.sidebar-content.visible {
+  transform: translateX(0);
+}
+
+.sidebar-content.hidden {
+  transform: translateX(100%);
+}
+.social-section {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  p.small_title {
+    font-family: "Unbounded";
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 17px;
+    letter-spacing: 0.11em;
+  }
+  .big-link {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    text-decoration: none;
+    color: $baby_blue;
+    gap: 11px;
+
+    span {
+      text-transform: initial;
+      display: block;
+      position: relative;
+      font-family: "Unbounded";
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 28px;
+      letter-spacing: 0;
+      text-align: center;
+    }
+  }
+}
+
+.small_title {
+  font-weight: bold;
+}
+
+.instagram-icon {
+  width: 22px;
+  height: 22px;
 }

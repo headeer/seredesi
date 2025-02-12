@@ -7,6 +7,7 @@ body {
   height: 100vh;
   padding: get-vw(10px);
   @include mobile-screen {
+    height: 100dvh;
   }
   #root,
   .app {
@@ -512,5 +513,13 @@ body .react-tel-input .country-list {
   .checkbox-wrapper-32 input[type="checkbox"]:checked ~ svg path {
     stroke-dashoffset: 0;
     stroke-width: calc(var(--size) / 2);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

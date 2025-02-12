@@ -8,6 +8,7 @@ import row2col2 from "../../assets/travels/puzzle/row-2-column-2.png";
 import row2col3 from "../../assets/travels/puzzle/row-2-column-3.png";
 import row3col1 from "../../assets/travels/puzzle/row-3-column-1.png";
 import row3col2 from "../../assets/travels/puzzle/row-3-column-2.png";
+// import { ReactComponent as BgMadeira } from "../../assets/travels/bg_madeira_big.svg";
 
 const PuzzleGame = ({ onPuzzleSolved }) => {
   const initialTiles = [
@@ -86,15 +87,20 @@ const PuzzleGame = ({ onPuzzleSolved }) => {
     return currentTiles.every((tile, index) => tile === initialTiles[index]);
   };
 
+  const isGreenBackground = (tile) => {
+    return [row1col1, row3col1, row1col3, row2col2].includes(tile);
+  };
+
   return (
     <div className="puzzle-game-container">
+      {/* <BgMadeira className="background" /> */}
       <div className="puzzle-grid">
         {tiles.map((tile, index) => (
           <div
             key={index}
             className={`tile ${tile ? "filled" : "empty"} ${
               gameWon ? "disabled" : ""
-            }`}
+            } ${isGreenBackground(tile) ? "bg_green" : ""}`}
             onClick={() => moveTile(index)}
           >
             {tile && <img src={tile} alt={`puzzle-${index}`} />}
@@ -106,3 +112,5 @@ const PuzzleGame = ({ onPuzzleSolved }) => {
 };
 
 export default PuzzleGame;
+
+// na tło delay 0.33s easing is out bouncing  + do postaci animacja na zasadzie 1 krok przesunięcie w dół a 2 krok zmiana wysokości o 1/16, o 13% i powrót do 100%

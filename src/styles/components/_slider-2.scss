@@ -178,7 +178,7 @@ footer {
     gap: 0;
     height: auto;
   }
-  @include responsive-size(margin-top, 32px);
+  @include responsive-size(padding-top, 22px);
   &.text-section-1 {
     h1 {
       font-weight: 500;

@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { ReactComponent as CopyIcon } from "../assets/s_icon.svg";
 
-const Footer = () => {
+const Footer = ({ currentSlide }) => {
   const { t } = useTranslation();
 
   return (
@@ -16,10 +16,14 @@ const Footer = () => {
       </h5>
       <h5 className="desktop">
         {t("international_solutions")}
-        <span className="icon">
-          <CopyIcon />
-        </span>
-        {t("copyright")}
+        {currentSlide !== 3 && (
+          <>
+            <span className="icon">
+              <CopyIcon />
+            </span>
+            {t("copyright")}
+          </>
+        )}
       </h5>
     </footer>
   );

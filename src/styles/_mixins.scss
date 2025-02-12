@@ -155,7 +155,11 @@ $desktop-breakpoint: 1440;
     @content;
   }
 }
-
+@mixin desktop-screen {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
 // Mixin for mobile-static: Applies static styles for 360px-375px
 @mixin mobile-static {
   @media screen and (min-width: 360px) and (max-width: 375px) {

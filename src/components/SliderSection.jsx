@@ -11,6 +11,9 @@ import PhoneInput from "react-country-phone-input";
 import "react-country-phone-input/lib/style.css";
 import heart from "../assets/heart.png";
 import { Link } from "react-router-dom";
+import { PopupModal } from "react-calendly";
+import emailjs from "@emailjs/browser";
+
 const shapes = [
   { id: 1, className: "shape shape-1" },
   { id: 2, className: "shape shape-2" },
@@ -24,18 +27,34 @@ const SliderSection = () => {
   const { t } = useTranslation();
   const [exitClass, setExitClass] = useState(false);
   const { register, handleSubmit, control } = useForm();
-  const { currentSlide, setCurrentSlide } = useSlide(); // Use the context
+  const { currentSlide, setCurrentSlide } = useSlide();
   const [submittedData, setSubmittedData] = useState({});
+  const [isCalendlyOpen, setCalendlyOpen] = useState(false);
 
+  const calendlyClick = () => {
+    setCalendlyOpen(true); // Open the Calendly popup
+  };
   const nextSlide = () => {
     const next = (currentSlide + 1) % 4;
-    setCurrentSlide(next); // Update the context
+    setCurrentSlide(next);
   };
 
   const onSubmit = (data) => {
     if (currentSlide === 4) return;
     setSubmittedData(data);
-    setCurrentSlide(4); // Show thank you message after form submission
+    setCurrentSlide(4);
+    emailjs
+      .send("service_hlq4j8q", "template_owqw3xk", data, {
+        publicKey: "LR6BrLJc-SZ31wn7r",
+      })
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        (error) => {
+          console.log("FAILED...", error);
+        }
+      );
   };
 
   const buttonLabels = [
@@ -156,12 +175,13 @@ const SliderSection = () => {
               >
                 <motion.div
                   layout
+                  onClick={calendlyClick}
                   className="call"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0 }}
                 >
-                  <a href="">{t("free_call")}</a>
+                  <span>{t("free_call")}</span>
                 </motion.div>
                 <textarea
                   {...register("message")}
@@ -305,8 +325,14 @@ const SliderSection = () => {
         </div>
       )}
       <div className="desktop">
-        <Footer />
+        <Footer currentSlide={currentSlide} />
       </div>
+      <PopupModal
+        url="https://calendly.com/seredesi/bezplatna-konsultacja-clone"
+        open={isCalendlyOpen}
+        onModalClose={() => setCalendlyOpen(false)} // Close the modal when it's finished
+        rootElement={document.getElementById("root")} // Ensure it renders correctly in the DOM
+      />
     </>
   );
 };
