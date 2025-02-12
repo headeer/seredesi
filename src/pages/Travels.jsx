@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import SolvePuzzle from "../components/travels/SolvePuzzle";
 import SolvedPuzzle from "../components/travels/SolvedPuzzle";
+import { ReactComponent as BgMadeira } from "../assets/travels/bg_madeira_big.svg";
 
 const Travels = () => {
   const [isPuzzleSolved, setIsPuzzleSolved] = useState(false);
-  //   const [animateSvgStage, setAnimateSvgStage] = useState(0);
+  const [animateSvgStage, setAnimateSvgStage] = useState(0);
+  const [animateSvgStageNew, setAnimateSvgStageNew] = useState(false);
   const setStage = (stage) => {
-    // setAnimateSvgStage(stage);
+    setAnimateSvgStage(stage);
+  };
+  const setStageNew = (stage) => {
+    setAnimateSvgStageNew(stage);
   };
   const handlePuzzleSolved = () => {
     setIsPuzzleSolved(true);
@@ -16,11 +21,11 @@ const Travels = () => {
   };
 
   return (
-    <div className="travels">
+    <div className="travels stage">
       {isPuzzleSolved ? (
         <SolvedPuzzle
           restart={restartPuzzle}
-          setAnimationStageBg={(stage) => setStage(stage)}
+          setAnimationStageBg={(stage) => setStageNew(stage)}
         />
       ) : (
         <SolvePuzzle
@@ -28,6 +33,13 @@ const Travels = () => {
           setAnimationStageBg={(stage) => setStage(stage)}
         />
       )}
+      <div className="stopper">
+        <BgMadeira
+          className={`background_game_original stage-${animateSvgStage} ${
+            animateSvgStageNew ? "animate" : ""
+          }`}
+        />
+      </div>
     </div>
   );
 };

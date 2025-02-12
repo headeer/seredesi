@@ -169,12 +169,34 @@
   }
 }
 .puzzle-game-container {
+  &.stage-finish {
+    svg {
+      opacity: 0;
+    }
+    .puzzle-grid {
+      animation: fadeOut 0.66s ease-out;
+      opacity: 0;
+    }
+  }
+  .background_game {
+    position: absolute;
+    z-index: -1;
+    top: 43px;
+    left: -2px;
+  }
   animation: fadeIn 0.33s ease-out;
   .tile {
     background-color: $bg_primary;
     border-radius: 22px;
     border: 2px solid $elegant_green;
-
+    svg {
+      .cls-1 {
+        fill: transparent;
+      }
+      .cls-2 {
+        stroke: $baby_blue;
+      }
+    }
     &.bg_green {
       background-color: $elegant_green;
     }
@@ -327,7 +349,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  z-index: 1;
+  z-index: 4;
 }
 
 .start-game-button {
@@ -539,4 +561,59 @@
 .instagram-icon {
   width: 22px;
   height: 22px;
+}
+.travels {
+  position: relative;
+  max-width: 100vw; /* Max width as viewport width */
+  overflow: hidden; /* Hide anything outside the bounds */
+  height: 100vh;
+  .stopper {
+    overflow: hidden;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+  .background_game_original {
+    position: absolute;
+    bottom: 180px;
+    left: 19px;
+    z-index: -1;
+    opacity: 0;
+    .col-1,
+    .col-2 {
+      transition: all 1.5s ease-out;
+    }
+
+    &.stage-1 {
+      opacity: 1;
+      animation: scaleImage 1.5s ease-out;
+      transition: all 0.33s ease-out;
+      transform: scale(2.4) translateY(56%) translateX(4%) translateZ(0);
+      stroke-width: 0.5px;
+      .col-1 {
+        fill: $uido-active;
+      }
+      .col-2 {
+        stroke: $uido-active;
+      }
+    }
+    &.animate {
+      transition: all 0.33s ease-out;
+      transform: scale(2.4) translateY(20%) translateX(4%) translateZ(0);
+      stroke-width: 0.5px;
+      z-index: 1;
+      .col-1,
+      .col-2 {
+        z-index: 1;
+        animation: moveUpDown 0.66s ease-out forwards;
+      }
+    }
+  }
+}
+@keyframes scaleImage {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2.4) translateY(56%) translateX(4%);
+  }
 }

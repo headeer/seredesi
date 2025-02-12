@@ -12,6 +12,7 @@ const SolvedPuzzle = ({ restart, setAnimationStageBg }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleToggle = () => {
+    setAnimationStageBg(!isVisible);
     setIsVisible(!isVisible);
   };
 
@@ -70,9 +71,6 @@ const SolvedPuzzle = ({ restart, setAnimationStageBg }) => {
           </div>
         </div>
       </div>
-      <BgTravel
-        className={`travel_background ${isVisible ? "expanded" : ""}`}
-      />
     </div>
   );
 };

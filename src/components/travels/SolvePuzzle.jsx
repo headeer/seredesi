@@ -14,6 +14,7 @@ const SolvePuzzle = ({ onPuzzleSolved, setAnimationStageBg }) => {
   const [gameWon, setGameWon] = useState(false);
 
   const gameWin = () => {
+    setAnimationStageBg(1);
     setGameWon(true);
     setTimeout(() => {
       onPuzzleSolved();
@@ -30,7 +31,7 @@ const SolvePuzzle = ({ onPuzzleSolved, setAnimationStageBg }) => {
       setTimeout(() => {
         setStartGameAnimation(false);
         setGameStarted(true);
-        setAnimationStageBg(1);
+        setAnimationStageBg(0);
       }, 660);
     }
   };

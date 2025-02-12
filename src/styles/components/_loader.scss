@@ -15,6 +15,7 @@
     height: 100dvh;
     flex-direction: row;
   }
+  @include responsive-size(padding, 22px);
 
   .line {
     background-color: $baby_blue;
@@ -64,10 +65,15 @@
     justify-content: center;
     @include desktop-screen {
       .letter-desktop {
-        animation: fadeIn 0.88s forwards ease-in-out;
-        transform: translateX(9px); // Shift each letter by 9px
+        animation: showLetterDesktop 0.88s forwards ease-in-out;
+        transform: translateX(0px); // Shift each letter by 9px
         animation-delay: calc(0.11s * var(--i)); // Using CSS variable for delay
       }
+    }
+    .letter-mobile {
+      animation: showLetterMobile 0.88s forwards ease-in-out;
+      transform: translateY(0px); // Shift each letter by 9px
+      animation-delay: calc(0.11s * var(--i)); // Using CSS variable for delay
     }
     @include mobile-screen {
       justify-content: space-between;
@@ -88,14 +94,40 @@
     }
   }
 
-  .letter-desktop,
+  .letter-desktop {
+    opacity: 0;
+    animation: showLetterDesktop 0.88s forwards ease-in-out;
+    transform: translateX(0);
+    width: 100%;
+  }
   .letter-mobile {
     opacity: 0;
-    animation: fadeIn 0.88s forwards ease-in-out;
-    transform: scale(0.9);
+    animation: showLetterMobile 0.88s forwards ease-in-out;
+    transform: translateY(0);
     width: 100%;
   }
 
+  /* Animations */
+  @keyframes showLetterDesktop {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes showLetterMobile {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   /* Animations */
   @keyframes fadeIn {
     from {
@@ -107,7 +139,6 @@
       transform: scale(1);
     }
   }
-
   @keyframes lineExpand {
     from {
       width: 0;
