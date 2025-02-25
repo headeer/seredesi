@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="320" height="320" fill="#181818" />
+
+    <!-- Stars -->
+    <circle cx="40" cy="30" r="1" fill="currentColor" fill-opacity="0.3" />
+    <circle cx="80" cy="40" r="1" fill="currentColor" fill-opacity="0.3" />
+    <circle cx="120" cy="20" r="1" fill="currentColor" fill-opacity="0.3" />
+    <circle cx="160" cy="35" r="1" fill="currentColor" fill-opacity="0.3" />
+    <circle cx="200" cy="25" r="1" fill="currentColor" fill-opacity="0.3" />
+    <circle cx="240" cy="30" r="1" fill="currentColor" fill-opacity="0.3" />
+    <circle cx="280" cy="22" r="1" fill="currentColor" fill-opacity="0.3" />
+
+    <!-- Pyramid -->
+    <path d="M160 40L280 280H40L160 40Z" fill="currentColor" fill-opacity="0.1" />
+
+    <!-- Pyramid details -->
+    <path d="M160 40L200 120L120 120L160 40Z" stroke="currentColor" stroke-opacity="0.2" fill="none" />
+    <path d="M120 120L200 120L240 200L80 200L120 120Z" stroke="currentColor" stroke-opacity="0.2"
+        fill="none" />
+    <path d="M80 200L240 200L280 280H40L80 200Z" stroke="currentColor" stroke-opacity="0.2"
+        fill="none" />
+
+    <!-- Desert -->
+    <path d="M0 240C80 220 240 220 320 240V320H0V240Z" fill="currentColor" fill-opacity="0.05" />
+    <path
+        d="M0 280C40 270 80 275 120 280C160 285 200 270 240 280C280 290 320 275 320 280V320H0V280Z"
+        fill="currentColor" fill-opacity="0.1" />
+</svg> 

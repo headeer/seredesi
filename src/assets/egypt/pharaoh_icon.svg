@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2L22 8H10L16 2Z" fill="currentColor" /> <!-- Crown top -->
+    <path d="M10 8H22V12H10V8Z" fill="currentColor" /> <!-- Crown base -->
+    <path d="M13 12H19V20H13V12Z" fill="currentColor" /> <!-- Face -->
+    <path d="M11 20H21L19 24H13L11 20Z" fill="currentColor" /> <!-- Shoulders -->
+    <path d="M13 24H19V28H13V24Z" fill="currentColor" /> <!-- Body -->
+    <path d="M14 12H18V14H14V12Z" fill="currentColor" fill-opacity="0.3" /> <!-- Face detail -->
+    <path d="M15 15H17V17H15V15Z" fill="currentColor" fill-opacity="0.3" /> <!-- Face detail -->
+</svg> 

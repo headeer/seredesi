@@ -7,11 +7,11 @@ import { useLocation } from "react-router-dom";
 
 const menuItems = [
   { key: "meet_seredesi", slide: 0, path: null },
-  { key: "what_is_active", slide: 0, path: null },
   { key: "who_gains", slide: 1, path: null },
-  { key: "how_to_use", slide: 3, path: null },
-  { key: "try_us", slide: 4, path: null },
+  { key: "how_to_use", slide: 2, path: null },
+  { key: "try_us", slide: 3, path: null },
   { key: "travel", slide: "/travels", path: "/travels" },
+  { key: "egypt", slide: "/egypt", path: "/egypt" },
 ];
 
 const MobileMenu = ({ isOpen, toggleMenu, handleMenuClick }) => {
@@ -50,7 +50,7 @@ const MobileMenu = ({ isOpen, toggleMenu, handleMenuClick }) => {
                 }`}
               >
                 {t(item.key)}
-                {item.key === "travel" && <SIcon />}
+                {(item.key === "travel" || item.key === "egypt") && <SIcon />}
               </button>
             ))}
           </nav>

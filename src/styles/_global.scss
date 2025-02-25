@@ -7,7 +7,7 @@ body {
   height: 100vh;
   padding: get-vw(10px);
   @include mobile-screen {
-    height: 100dvh;
+    min-height: 100dvh;
   }
   #root,
   .app {
@@ -208,6 +208,13 @@ button.submit {
     transition: all ease-in-out 0.33s;
     @include responsive-size(height, 43px);
   }
+  &:active {
+    transition: all ease-in-out 0.33s;
+    transform: translateY(6px);
+    &::before {
+      bottom: 0;
+    }
+  }
   &:hover {
     &::before {
       width: 100%;
@@ -227,6 +234,7 @@ button.submit {
   }
   &:active {
     background: $background;
+    transition: all ease-in-out 0.33s;
     border: 1px solid $baby_blue;
     color: $baby_blue !important;
   }

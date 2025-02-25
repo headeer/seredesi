@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" fill="currentColor" /> <!-- Base -->
+    <path d="M4 4H28V8H4V4Z" fill="currentColor" fill-opacity="0.3" /> <!-- Top row -->
+    <path d="M4 12H28V16H4V12Z" fill="currentColor" fill-opacity="0.3" /> <!-- Middle row -->
+    <path d="M4 20H28V24H4V20Z" fill="currentColor" fill-opacity="0.3" /> <!-- Bottom row -->
+    <!-- Hieroglyphic patterns -->
+    <circle cx="8" cy="6" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="16" cy="6" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="24" cy="6" r="1" fill="currentColor" fill-opacity="0.5" />
+    <path d="M6 14H10V15H6V14Z" fill="currentColor" fill-opacity="0.5" />
+    <path d="M14 14H18V15H14V14Z" fill="currentColor" fill-opacity="0.5" />
+    <path d="M22 14H26V15H22V14Z" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="8" cy="22" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="16" cy="22" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="24" cy="22" r="1" fill="currentColor" fill-opacity="0.5" />
+</svg> 

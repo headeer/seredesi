@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Sky -->
+    <rect width="800" height="600" fill="#181818" />
+
+    <!-- Stars -->
+    <circle cx="100" cy="50" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="200" cy="80" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="300" cy="40" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="400" cy="70" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="500" cy="30" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="600" cy="60" r="1" fill="currentColor" fill-opacity="0.5" />
+    <circle cx="700" cy="45" r="1" fill="currentColor" fill-opacity="0.5" />
+
+    <!-- Desert background -->
+    <path d="M0 400C200 350 600 350 800 400V600H0V400Z" class="pyramid-bg" fill="currentColor"
+        fill-opacity="0.1" />
+
+    <!-- Main pyramid -->
+    <path d="M400 100L600 500H200L400 100Z" class="pyramid-bg" fill="currentColor" />
+
+    <!-- Pyramid details -->
+    <path d="M400 100L450 200L350 200L400 100Z" class="pyramid-details" stroke="currentColor"
+        stroke-opacity="0.3" fill="none" />
+    <path d="M350 200L450 200L500 300L300 300L350 200Z" class="pyramid-details"
+        stroke="currentColor" stroke-opacity="0.3" fill="none" />
+    <path d="M300 300L500 300L550 400L250 400L300 300Z" class="pyramid-details"
+        stroke="currentColor" stroke-opacity="0.3" fill="none" />
+    <path d="M250 400L550 400L600 500L200 500L250 400Z" class="pyramid-details"
+        stroke="currentColor" stroke-opacity="0.3" fill="none" />
+
+    <!-- Small pyramids -->
+    <path d="M100 300L200 500H0L100 300Z" class="pyramid-bg" fill="currentColor" fill-opacity="0.5" />
+    <path d="M700 300L800 500H600L700 300Z" class="pyramid-bg" fill="currentColor"
+        fill-opacity="0.5" />
+
+    <!-- Desert dunes -->
+    <path
+        d="M0 500C100 480 200 490 300 500C400 510 500 480 600 500C700 520 800 490 800 500V600H0V500Z"
+        fill="currentColor" fill-opacity="0.2" />
+</svg> 

@@ -12,7 +12,7 @@
   overflow: hidden;
   position: relative;
   @include mobile-screen {
-    height: 100dvh;
+    min-height: 100dvh;
     flex-direction: row;
   }
   @include responsive-size(padding, 22px);
@@ -24,19 +24,19 @@
   }
 
   .top-line {
-    animation: lineExpand 1.33s forwards linear;
+    animation: lineExpand 1.33s forwards ease-in;
     position: absolute;
     top: -20px;
     left: 0;
   }
 
   .bottom-line {
-    animation: lineExpand 1.33s forwards linear;
+    animation: lineExpand 1.33s forwards ease-in;
     position: absolute;
     bottom: -20px;
     left: 0;
     @include mobile-screen {
-      animation: lineExpandVertical 1.33s forwards linear;
+      animation: lineExpandVertical 1.33s forwards ease-in;
       width: 1px;
       left: auto;
     }
@@ -63,6 +63,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 22px;
     @include desktop-screen {
       .letter-desktop {
         animation: showLetterDesktop 0.88s forwards ease-in-out;

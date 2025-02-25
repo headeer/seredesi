@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Night sky -->
+    <rect width="800" height="600" fill="#181818" />
+
+    <!-- Stars -->
+    <g fill="currentColor" fill-opacity="0.5">
+        <circle cx="100" cy="50" r="1" />
+        <circle cx="200" cy="30" r="1" />
+        <circle cx="300" cy="70" r="1" />
+        <circle cx="400" cy="40" r="1" />
+        <circle cx="500" cy="60" r="1" />
+        <circle cx="600" cy="35" r="1" />
+        <circle cx="700" cy="55" r="1" />
+        <circle cx="150" cy="80" r="1" />
+        <circle cx="250" cy="45" r="1" />
+        <circle cx="350" cy="65" r="1" />
+        <circle cx="450" cy="25" r="1" />
+        <circle cx="550" cy="75" r="1" />
+        <circle cx="650" cy="40" r="1" />
+        <circle cx="750" cy="70" r="1" />
+    </g>
+
+    <!-- Main pyramid with glow -->
+    <path d="M400 50L650 500H150L400 50Z" class="pyramid-bg" fill="currentColor" fill-opacity="0.2" />
+    <path d="M400 50L650 500H150L400 50Z" class="pyramid-bg" stroke="currentColor"
+        stroke-opacity="0.5" stroke-width="2" />
+
+    <!-- Treasure rays -->
+    <g stroke="currentColor" stroke-opacity="0.3">
+        <path d="M400 250L350 200" />
+        <path d="M400 250L450 200" />
+        <path d="M400 250L400 180" />
+        <path d="M400 250L320 220" />
+        <path d="M400 250L480 220" />
+    </g>
+
+    <!-- Desert with oasis -->
+    <path d="M0 400C200 380 600 380 800 400V600H0V400Z" fill="currentColor" fill-opacity="0.1" />
+    <path
+        d="M0 450C100 430 200 440 300 450C400 460 500 430 600 450C700 470 800 440 800 450V600H0V450Z"
+        fill="currentColor" fill-opacity="0.15" />
+
+    <!-- Palm trees -->
+    <g fill="currentColor" fill-opacity="0.2">
+        <path d="M100 420L120 380L140 420H100Z" />
+        <rect x="115" y="420" width="10" height="30" />
+        <path d="M600 420L620 380L640 420H600Z" />
+        <rect x="615" y="420" width="10" height="30" />
+    </g>
+
+    <!-- Hieroglyphic border -->
+    <g stroke="currentColor" stroke-opacity="0.3">
+        <path d="M50 550H750" stroke-width="2" />
+        <path d="M100 530V570" />
+        <path d="M200 530V570" />
+        <path d="M300 530V570" />
+        <path d="M400 530V570" />
+        <path d="M500 530V570" />
+        <path d="M600 530V570" />
+        <path d="M700 530V570" />
+    </g>
+</svg> 

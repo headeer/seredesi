@@ -235,13 +235,13 @@ const SliderSection = () => {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          d="M 10 10 L 90 90"
+                          d="M 90 90 L 10 10"
                           stroke="#d2e7fa"
                           strokeDasharray="113"
                           strokeDashoffset="113"
                         ></path>
                         <path
-                          d="M 90 10 L 10 90"
+                          d="M 10 90 L 90 10"
                           stroke="#d2e7fa"
                           strokeDasharray="113"
                           strokeDashoffset="113"

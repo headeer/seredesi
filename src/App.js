@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { SlideProvider } from "./context/SlideContext";
 import "./i18n.ts";
 import Travels from "./pages/Travels.jsx";
+import Egypt from "./pages/Egypt.jsx";
 import Loader from "./components/Loader";
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/travels" element={<Travels />} />
+                <Route path="/egypt" element={<Egypt />} />
               </Routes>
             </>
           )}
