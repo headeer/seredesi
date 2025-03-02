@@ -1,0 +1,352 @@
+.raft-rush-game {
+  width: 100%;
+  max-width: 400px;
+  height: 100dvh;
+  max-height: 500px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #00bfff 0%, #1e90ff 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  .water-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 50px,
+        rgba(255, 255, 255, 0.1) 50px,
+        rgba(255, 255, 255, 0.1) 51px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 50px,
+        rgba(255, 255, 255, 0.05) 50px,
+        rgba(255, 255, 255, 0.05) 51px
+      );
+    animation: waterMove 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(
+          circle at 30% 50%,
+          rgba(255, 255, 255, 0.2) 0%,
+          transparent 60%
+        ),
+        radial-gradient(
+          circle at 70% 50%,
+          rgba(255, 255, 255, 0.2) 0%,
+          transparent 60%
+        );
+      animation: shineEffect 4s ease-in-out infinite alternate;
+    }
+  }
+
+  .game-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+
+    .timer {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .game-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .lanes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 100%;
+    gap: 2px;
+    padding: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    touch-action: pan-y pinch-zoom;
+
+    .lane {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      touch-action: manipulation;
+
+      &.active {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        background: rgba(255, 255, 255, 0.1);
+        transition: opacity 0.2s ease;
+      }
+
+      &:active::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .player {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(0);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: hitboxPulse 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .boat-icon {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      animation: boatFloat 2s ease-in-out infinite;
+    }
+  }
+
+  .obstacle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    will-change: transform;
+    transform: translateZ(0);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      width: 2px;
+      height: 30px;
+      background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      transform-origin: bottom;
+      animation: fallTrail 0.3s linear infinite;
+    }
+
+    .obstacle-icon {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      transform-origin: center;
+      transition: transform 0.1s ease;
+
+      &.shark {
+        animation: sharkSwim 2s infinite ease-in-out;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+      }
+
+      &.log {
+        animation: logFloat 3s infinite ease-in-out;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+      }
+
+      &.rock {
+        animation: rockSway 4s infinite ease-in-out;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+      }
+    }
+  }
+
+  .start-screen,
+  .game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    z-index: 20;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    button {
+      background: #ffd700;
+      color: #000;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+@keyframes waterMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes shineEffect {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes boatFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes sharkSwim {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(5deg);
+  }
+}
+
+@keyframes logFloat {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes rockSway {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(5deg);
+  }
+}
+
+@keyframes fallTrail {
+  0% {
+    transform: scaleY(0.3);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+@keyframes hitboxPulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}

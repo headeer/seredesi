@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Underwater gradient background -->
+    <rect width="800" height="600" fill="url(#underwater_gradient)" />
+
+    <!-- Temple ruins -->
+    <path d="M200 300 H600 V500 H200 V300 M250 300 V500 M350 300 V500 M450 300 V500 M550 300 V500"
+        stroke="#4ECDC4" stroke-width="4" stroke-opacity="0.3" />
+    <path d="M150 300 H650 L400 200 Z"
+        stroke="#4ECDC4" stroke-width="4" stroke-opacity="0.3" />
+
+    <!-- Coral formations -->
+    <path d="M100 500 Q150 450 200 500 Q250 550 300 500"
+        stroke="#4ECDC4" stroke-width="3" stroke-opacity="0.2" />
+    <path d="M500 500 Q550 450 600 500 Q650 550 700 500"
+        stroke="#4ECDC4" stroke-width="3" stroke-opacity="0.2" />
+
+    <!-- Air bubbles -->
+    <circle cx="300" cy="150" r="5" fill="#7CDFFF" fill-opacity="0.3" />
+    <circle cx="320" cy="180" r="3" fill="#7CDFFF" fill-opacity="0.3" />
+    <circle cx="500" cy="170" r="4" fill="#7CDFFF" fill-opacity="0.3" />
+    <circle cx="480" cy="140" r="3" fill="#7CDFFF" fill-opacity="0.3" />
+
+    <!-- Gradient definitions -->
+    <defs>
+        <linearGradient id="underwater_gradient" x1="400" y1="0" x2="400" y2="600"
+            gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#006994" />
+            <stop offset="1" stop-color="#003366" />
+        </linearGradient>
+    </defs>
+</svg> 

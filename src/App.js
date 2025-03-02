@@ -8,6 +8,7 @@ import "./i18n.ts";
 import Travels from "./pages/Travels.jsx";
 import Egypt from "./pages/Egypt.jsx";
 import Loader from "./components/Loader";
+import Cyprus from "./routes/Cyprus";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/travels" element={<Travels />} />
                 <Route path="/egypt" element={<Egypt />} />
+                <Route path="/cyprus" element={<Cyprus />} />
               </Routes>
             </>
           )}

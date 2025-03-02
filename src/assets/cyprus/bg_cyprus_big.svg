@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Underwater gradient background -->
+    <rect width="1200" height="800" fill="url(#underwater_gradient)" />
+
+    <!-- Large underwater temple -->
+    <path
+        d="M300 300 H900 V700 H300 V300 M400 300 V700 M500 300 V700 M600 300 V700 M700 300 V700 M800 300 V700"
+        stroke="#4ECDC4" stroke-width="8" stroke-opacity="0.3" />
+    <path d="M200 300 H1000 L600 150 Z"
+        stroke="#4ECDC4" stroke-width="8" stroke-opacity="0.3" />
+
+    <!-- Large coral formations -->
+    <path d="M100 700 Q200 600 300 700 Q400 800 500 700"
+        stroke="#4ECDC4" stroke-width="6" stroke-opacity="0.2" />
+    <path d="M700 700 Q800 600 900 700 Q1000 800 1100 700"
+        stroke="#4ECDC4" stroke-width="6" stroke-opacity="0.2" />
+
+    <!-- Schools of fish -->
+    <path d="M200 200 Q300 150 400 200" stroke="#7CDFFF" stroke-width="2" stroke-opacity="0.2" />
+    <path d="M800 250 Q900 200 1000 250" stroke="#7CDFFF" stroke-width="2" stroke-opacity="0.2" />
+
+    <!-- Air bubbles -->
+    <circle cx="400" cy="100" r="10" fill="#7CDFFF" fill-opacity="0.3" />
+    <circle cx="420" cy="150" r="8" fill="#7CDFFF" fill-opacity="0.3" />
+    <circle cx="800" cy="120" r="12" fill="#7CDFFF" fill-opacity="0.3" />
+    <circle cx="780" cy="80" r="6" fill="#7CDFFF" fill-opacity="0.3" />
+
+    <!-- Light rays -->
+    <path d="M200 0 L300 300" stroke="#7CDFFF" stroke-width="2" stroke-opacity="0.1" />
+    <path d="M600 0 L700 400" stroke="#7CDFFF" stroke-width="2" stroke-opacity="0.1" />
+    <path d="M1000 0 L900 300" stroke="#7CDFFF" stroke-width="2" stroke-opacity="0.1" />
+
+    <!-- Gradient definitions -->
+    <defs>
+        <linearGradient id="underwater_gradient" x1="600" y1="0" x2="600" y2="800"
+            gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#006994" />
+            <stop offset="1" stop-color="#003366" />
+        </linearGradient>
+    </defs>
+</svg> 
