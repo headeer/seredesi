@@ -330,3 +330,50 @@ header {
     }
   }
 }
+
+.not-found-header {
+  .not-found-header-content {
+    &.desktop {
+      display: flex;
+      flex-direction: column;
+      gap: get-vw(22px);
+      padding: get-vw(22px);
+      width: get-vw(191px);
+
+      .horizontal-logo {
+        width: 100%;
+
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .where-text {
+        font-family: "Unbounded";
+        font-weight: 500;
+        font-size: get-vw(99px);
+        line-height: get-vw(94px);
+        letter-spacing: 0;
+        text-align: left;
+        color: $baby_blue;
+        display: flex;
+        flex-direction: row;
+        gap: get-vw(22px);
+        margin-top: get-vw(44px);
+
+        span {
+          writing-mode: vertical-lr;
+          transform: rotate(180deg);
+          white-space: nowrap;
+        }
+      }
+    }
+
+    @include mobile-screen {
+      &.desktop {
+        display: none;
+      }
+    }
+  }
+}

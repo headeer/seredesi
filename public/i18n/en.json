@@ -77,5 +77,12 @@
   "go_back": "Go back to puzzle",
   "visit": "Visit",
   "home_page": "Home Page",
-  "to_madeira": "to Madeira"
+  "to_madeira": "to Madeira",
+  "hi_there": "HI THERE! HOW ARE U?",
+  "here_is": "here is",
+  "404": "404",
+  "page_not_exist": "THE PAGE WITH THIS ADDRESS DOES NOT EXIST",
+  "start_journey": "START JOURNEY",
+  "start_your_journey": "START YOUR JOURNEY",
+  "go_home": "go home"
 }
